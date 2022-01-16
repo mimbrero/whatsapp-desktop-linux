@@ -1,0 +1,14 @@
+{
+  "name": "whatsapp-desktop-linux",
+  "version": "1.0.0",
+  "description": "WhatsApp Desktop for Linux (unofficial)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "InetAddress",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^16.0.7"
+  }
+}

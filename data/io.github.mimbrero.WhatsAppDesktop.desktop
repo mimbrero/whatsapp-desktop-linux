@@ -1,0 +1,7 @@
+[Desktop Entry]
+
+Name=WhatsApp Desktop
+Exec=io.github.mimbrero.WhatsAppDesktop
+Type=Application
+Icon=io.github.mimbrero.WhatsAppDesktop
+Categories=Chat;Messages;Web;Internet

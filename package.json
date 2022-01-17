@@ -2,13 +2,30 @@
   "name": "whatsapp-desktop-linux",
   "version": "1.0.0",
   "description": "WhatsApp Desktop for Linux (unofficial)",
-  "main": "main.js",
+  "author": "Alberto Mimbrero",
+  "license": "MIT",
+  "main": "src/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
-  "author": "InetAddress",
-  "license": "ISC",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "electron": "^16.0.7"
+  },
+  "dependencies": {
+    "electron-store": "^8.0.1"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-zip"
+        }
+      ]
+    }
   }
 }

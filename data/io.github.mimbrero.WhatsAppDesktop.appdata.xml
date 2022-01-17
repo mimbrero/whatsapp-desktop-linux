@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>io.github.mimbrero.WhatsAppDesktop</id>
+  <name>WhatsApp Desktop</name>
+  <summary>Unofficial WhatsApp Web Desktop client.</summary>
+
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>MIT</project_license>
+
+  <description>
+    <p>Unofficial WhatsApp Desktop client.</p>
+    <p>With WhatsApp on the desktop, you can seamlessly sync all of your chats to your computer so that you can chat on whatever device is most convenient to you.</p>
+    <p>NOTE: This wrapper is not verified by, affiliated with, or supported by WhatsApp Inc.</p>
+  </description>
+
+  <url type="bugtracker">https://github.com/mimbrero/whatsapp-desktop-linux/issues</url>
+  <url type="homepage">https://github.com/mimbrero/whatsapp-desktop-linux</url>
+
+  <releases>
+    <release version="1.0" date="2022-01-17">
+      <description>
+        <p>First release!</p>
+      </description>
+    </release>
+  </releases>
+
+  <developer_name>Alberto Mimbrero</developer_name>
+  <update_contact>mimbrero.alberto@gmail.com</update_contact>
+</component>

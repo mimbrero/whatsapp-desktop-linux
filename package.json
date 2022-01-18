@@ -6,26 +6,12 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.63",
-    "@electron-forge/maker-zip": "^6.0.0-beta.63",
-    "electron": "^16.0.7"
-  },
-  "dependencies": {
+    "electron": "^16.0.7",
+    "electron-builder": "^22.14.5",
     "electron-store": "^8.0.1"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-zip"
-        }
-      ]
-    }
   }
 }

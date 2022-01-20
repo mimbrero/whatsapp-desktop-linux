@@ -15,5 +15,15 @@
   "devDependencies": {
     "electron": "^16.0.7",
     "electron-builder": "^22.14.5"
+  },
+  "build": {
+    "appId": "io.github.mimbrero.WhatsAppDesktop",
+    "extraFiles": [
+      {
+        "from": "data",
+        "to": "data",
+        "filter": "**/*"
+      }
+    ]
   }
 }

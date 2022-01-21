@@ -24,6 +24,12 @@
     </release>
   </releases>
 
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/mimbrero/whatsapp-desktop-linux/main/data/screenshots/screenshot-1.png</image>
+    </screenshot>
+  </screenshots>
+
   <developer_name>Alberto Mimbrero</developer_name>
   <update_contact>mimbrero.alberto@gmail.com</update_contact>
 </component>

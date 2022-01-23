@@ -16,11 +16,8 @@ export default class WindowSettings extends Settings {
     }
 
     public saveSettings(window: BrowserWindow) {
+        this.setBounds(window.getNormalBounds());
         this.setMaximized(window.isMaximized());
-
-        if (!window.isMaximized()) {
-            this.setBounds(window.getBounds());
-        }
     }
 
     public getBounds(defaults: Electron.Rectangle): Electron.Rectangle {

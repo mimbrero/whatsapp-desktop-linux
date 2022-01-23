@@ -1,4 +1,4 @@
-import { BrowserWindow } from 'electron';
+import { BrowserWindow, screen } from 'electron';
 import Settings from './settings';
 
 export default class WindowSettings extends Settings {
@@ -7,8 +7,16 @@ export default class WindowSettings extends Settings {
     }
 
     public applySettings(window: BrowserWindow) {
-        let defaults = window.getBounds(); // The window is constructed with the defaults.
-        window.setBounds(this.getBounds(defaults));
+        let bounds = this.getBounds(window.getBounds());
+        let display = screen.getDisplayMatching(bounds).workArea;
+        if (
+            bounds.x >= display.x &&
+            bounds.y >= display.y &&
+            bounds.width + bounds.x <= display.width + display.x &&
+            bounds.height + bounds.y <= display.height + display.y
+        ) {
+            window.setBounds(bounds);
+        }
 
         if (this.isMaximized()) {
             window.maximize();

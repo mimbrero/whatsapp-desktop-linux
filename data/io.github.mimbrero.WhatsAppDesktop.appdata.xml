@@ -17,6 +17,7 @@
   <url type="homepage">https://github.com/mimbrero/whatsapp-desktop-linux</url>
 
   <releases>
+    <release version="1.0.1" date="2022-01-28"/>
     <release version="1.0" date="2022-01-17">
       <description>
         <p>First release!</p>

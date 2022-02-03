@@ -50,6 +50,12 @@ export default class WhatsApp {
             this.windowSettings.saveSettings(this.window);
         });
 
+        this.window.webContents.on('before-input-event', (_event, input) => {
+            if (input.control && input.key.toLowerCase() === 'q') {
+                this.window.close();
+            }
+        });
+
         ipcMain.on('notification-click', _event => this.window.show());
     }
 };

@@ -1,19 +1,19 @@
-import { BrowserWindow, Event, shell } from 'electron';
+import { BrowserWindow, ipcMain, shell } from 'electron';
+import path from 'path';
 import WindowSettings from './settings/window-settings';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4464.5 Safari/537.36';
 
 export default class WhatsApp {
-    private readonly windowSettings: WindowSettings = new WindowSettings();
+    private readonly windowSettings = new WindowSettings();
     private window: BrowserWindow;
 
     public init() {
         this.window = this.createWindow();
-
         this.windowSettings.applySettings(this.window);
+
         this.makeLinksOpenInBrowser();
-        
-        this.window.on('close', event => this.onClose(event));
+        this.registerListeners();
     }
 
     private createWindow() {
@@ -23,7 +23,11 @@ export default class WhatsApp {
             width: 1100,
             height: 700,
             minWidth: 650,
-            minHeight: 550
+            minHeight: 550,
+            webPreferences: {
+                preload: path.join(__dirname, 'preload.js'),
+                contextIsolation: false // native Notification override in preload :(
+            }
         });
 
         window.setMenu(null);
@@ -41,9 +45,11 @@ export default class WhatsApp {
         });
     }
 
-    // Events
+    private registerListeners() {
+        this.window.on('close', _event => {
+            this.windowSettings.saveSettings(this.window);
+        });
 
-    private onClose(event: Event) {
-        this.windowSettings.saveSettings(this.window);
+        ipcMain.on('notification-click', _event => this.window.show());
     }
 };

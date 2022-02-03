@@ -20,7 +20,7 @@ export default class WhatsApp {
     private createWindow() {
         const window = new BrowserWindow({
             title: 'WhatsApp',
-            backgroundColor: '#090D11',
+            backgroundColor: '#111b21',
             width: 1100,
             height: 700,
             minWidth: 650,

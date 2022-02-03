@@ -51,7 +51,7 @@ export default class WhatsApp {
         });
 
         this.window.webContents.on('before-input-event', (_event, input) => {
-            if (input.control && input.key.toLowerCase() === 'q') {
+            if (input.control && (input.key.toLowerCase() === 'q' || input.key.toLowerCase() === 'w')) {
                 this.window.close();
             }
         });

@@ -14,6 +14,7 @@ export default class WhatsApp {
 
         this.makeLinksOpenInBrowser();
         this.registerListeners();
+        this.registerHotkeys();
     }
 
     private createWindow() {
@@ -50,12 +51,18 @@ export default class WhatsApp {
             this.windowSettings.saveSettings(this.window);
         });
 
+        ipcMain.on('notification-click', _event => this.window.show());
+    }
+
+    private registerHotkeys() {
         this.window.webContents.on('before-input-event', (_event, input) => {
             if (input.control && (input.key.toLowerCase() === 'q' || input.key.toLowerCase() === 'w')) {
                 this.window.close();
             }
-        });
 
-        ipcMain.on('notification-click', _event => this.window.show());
+            else if (input.key.toLowerCase() === 'f5' || (input.control && input.key.toLowerCase() === 'r')) {
+                this.window.reload();
+            }
+        });
     }
 };

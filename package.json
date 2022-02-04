@@ -4,11 +4,11 @@
   "description": "WhatsApp Desktop for Linux (unofficial)",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "dist": "tsc",
     "watch": "tsc -w",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
-    "start": "npm run build && electron ./dist/index.js",
-    "pack": "npm run build && electron-builder"
+    "start": "npm run dist && electron ./dist/index.js",
+    "build": "npm run dist && electron-builder"
   },
   "author": "Alberto Mimbrero",
   "license": "MIT",

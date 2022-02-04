@@ -1,16 +1,16 @@
 [
     {
         "type": "file",
-        "url": "https://github.com/electron/electron/releases/download/v16.0.7/SHASUMS256.txt",
-        "sha256": "fc799dd33c2e3ee792f45302eca80f496dbaa6aa8d535bd00c252572f06351fb",
-        "dest-filename": "SHASUMS256.txt-16.0.7",
+        "url": "https://github.com/electron/electron/releases/download/v17.0.0/SHASUMS256.txt",
+        "sha256": "81013ab86d408a3dede66bca1581a978014cefa5c7cc0a1df971381d6704195f",
+        "dest-filename": "SHASUMS256.txt-17.0.0",
         "dest": "flatpak-node/cache/electron"
     },
     {
         "type": "file",
-        "url": "https://github.com/electron/electron/releases/download/v16.0.7/electron-v16.0.7-linux-arm64.zip",
-        "sha256": "6d27cc9acc3f580118cdd685d629d39c2a1fc094376b719fa0100a7446f8fede",
-        "dest-filename": "electron-v16.0.7-linux-arm64.zip",
+        "url": "https://github.com/electron/electron/releases/download/v17.0.0/electron-v17.0.0-linux-arm64.zip",
+        "sha256": "e7bf2ec09b8a7018ba417fc670a15594fb8f3e930626485f2423e9a89e2dcbd0",
+        "dest-filename": "electron-v17.0.0-linux-arm64.zip",
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
             "aarch64"
@@ -18,9 +18,9 @@
     },
     {
         "type": "file",
-        "url": "https://github.com/electron/electron/releases/download/v16.0.7/electron-v16.0.7-linux-armv7l.zip",
-        "sha256": "8a8567c745ab1c2b1de19305da0a0036ba100b27e1fc4eb014aca325aff3193e",
-        "dest-filename": "electron-v16.0.7-linux-armv7l.zip",
+        "url": "https://github.com/electron/electron/releases/download/v17.0.0/electron-v17.0.0-linux-armv7l.zip",
+        "sha256": "29b31c5e77d4d6d9e1a4340fdf08c28ae6698ea9e20d636cec8a59dc758815ef",
+        "dest-filename": "electron-v17.0.0-linux-armv7l.zip",
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
             "arm"
@@ -28,9 +28,9 @@
     },
     {
         "type": "file",
-        "url": "https://github.com/electron/electron/releases/download/v16.0.7/electron-v16.0.7-linux-ia32.zip",
-        "sha256": "8b79ce5fbc704eb03c34d4b96765314074a687ae3165cab21f84f77fee36d755",
-        "dest-filename": "electron-v16.0.7-linux-ia32.zip",
+        "url": "https://github.com/electron/electron/releases/download/v17.0.0/electron-v17.0.0-linux-ia32.zip",
+        "sha256": "6f6fe5fa0452e871abe82dbd25d7cf92ab7011995b3b2b15d04d8691ddc9e9de",
+        "dest-filename": "electron-v17.0.0-linux-ia32.zip",
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
             "i386"
@@ -38,9 +38,9 @@
     },
     {
         "type": "file",
-        "url": "https://github.com/electron/electron/releases/download/v16.0.7/electron-v16.0.7-linux-x64.zip",
-        "sha256": "544cd6d48262f24c8a82d2e8079b20889ec5e83959404fdda9ad00c86e9efa70",
-        "dest-filename": "electron-v16.0.7-linux-x64.zip",
+        "url": "https://github.com/electron/electron/releases/download/v17.0.0/electron-v17.0.0-linux-x64.zip",
+        "sha256": "dc74e28719a79f05dd741cda8c22c2bb164dec178c6d560af085910b37cf000b",
+        "dest-filename": "electron-v17.0.0-linux-x64.zip",
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
             "x86_64"
@@ -727,10 +727,10 @@
     },
     {
         "type": "file",
-        "url": "https://registry.npmjs.org/electron/-/electron-16.0.7.tgz",
-        "sha512": "fc8330a417f6b2f840d57ffb439f1157e367d1fbd426c1e7886e138b368eeeae2228561243a841bec2f3f9cca5719f2144c2a6572e46d5768c349203d9a876df",
-        "dest-filename": "30a417f6b2f840d57ffb439f1157e367d1fbd426c1e7886e138b368eeeae2228561243a841bec2f3f9cca5719f2144c2a6572e46d5768c349203d9a876df",
-        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/fc/83"
+        "url": "https://registry.npmjs.org/electron/-/electron-17.0.0.tgz",
+        "sha512": "dd45dc0503306cc59d3ef18769274f325b87addfbf6dcf8ad78dcccaf139cd567e4b55c21ede2c6aeedd8fab2f2479ece6594dd181bf73a87fbd17da748a7c66",
+        "dest-filename": "dc0503306cc59d3ef18769274f325b87addfbf6dcf8ad78dcccaf139cd567e4b55c21ede2c6aeedd8fab2f2479ece6594dd181bf73a87fbd17da748a7c66",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/dd/45"
     },
     {
         "type": "file",
@@ -2800,12 +2800,6 @@
     },
     {
         "type": "inline",
-        "contents": "46426a71185e1667ab3a2a96cca808710c19b77b\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/electron/-/electron-16.0.7.tgz\", \"integrity\": \"sha512-/IMwpBf2svhA1X/7Q58RV+Nn0fvUJsHniG4TizaO7q4iKFYSQ6hBvsLz+cylcZ8hRMKmVy5G1XaMNJID2ah23w==\", \"time\": 0, \"size\": 135410, \"metadata\": {\"url\": \"https://registry.npmjs.org/electron/-/electron-16.0.7.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
-        "dest-filename": "b6d247623904e07189e4f57f800aa99abdfd0dafe1e76c1acdf5f906ce64",
-        "dest": "flatpak-node/npm-cache/_cacache/index-v5/d2/de"
-    },
-    {
-        "type": "inline",
         "contents": "4691bf551f89fd5950bac329ead7c10b59843e1e\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/jake/-/jake-10.8.2.tgz\", \"integrity\": \"sha512-eLpKyrfG3mzvGE2Du8VoPbeSkRry093+tyNjdYaBbJS9v17knImYGNXQCUV0gLxQtF82m3E8iRb/wdSQZLoq7A==\", \"time\": 0, \"size\": 39930, \"metadata\": {\"url\": \"https://registry.npmjs.org/jake/-/jake-10.8.2.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "5dfdfe9cf5bebbcdfc4c30a3b356ccae996b2236190d5c1c97ce7df497d0",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/c4/2d"
@@ -3592,6 +3586,12 @@
     },
     {
         "type": "inline",
+        "contents": "8512c25e1915698ecb7e2feda54fe5c5687a7f9a\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/electron/-/electron-17.0.0.tgz\", \"integrity\": \"sha512-3UXcBQMwbMWdPvGHaSdPMluHrd+/bc+K143MyvE5zVZ+S1XCHt4sau7dj6svJHns5llN0YG/c6h/vRfadIp8Zg==\", \"time\": 0, \"size\": 136075, \"metadata\": {\"url\": \"https://registry.npmjs.org/electron/-/electron-17.0.0.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "01540af920fd7b6937489610a9c0cf600859b80e50847d3bf8704cfacc98",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/cb/4a"
+    },
+    {
+        "type": "inline",
         "contents": "8538ee1877434dc42df094642fb3e17481d38fbe\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/registry-auth-token\", \"integrity\": \"sha256-ZZ4njORTmFhSgXFwosM51E5VUWIhMRbJIbxhi3Wkj0I=\", \"time\": 0, \"size\": 2689, \"metadata\": {\"url\": \"https://registry.npmjs.org/registry-auth-token\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "bd4ca0211e1bf98bdce76a4488018b45640ba83c82b8b46eb4712f58a528",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/2d/64"
@@ -3745,12 +3745,6 @@
         "contents": "90b6f2244ce23fd3d4d2b92ea5b16b6ca8d309a9\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/cross-spawn\", \"integrity\": \"sha256-TLvYVt8qPcXesWsdSgVawky8Z1Osjk7bvb+MEOCf0gw=\", \"time\": 0, \"size\": 3162, \"metadata\": {\"url\": \"https://registry.npmjs.org/cross-spawn\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "5176c8bafdeb76fbf895be967ac6b3c130a2cf8ac9c8a270923da5de987d",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/c9/80"
-    },
-    {
-        "type": "inline",
-        "contents": "90c30e6cf4305b4197d885abd5237ca460542682\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/electron\", \"integrity\": \"sha256-Wv37yg3brSw+jmQzpFJ1O7qz84G1mgIPp2u8qte3CCg=\", \"time\": 0, \"size\": 2474, \"metadata\": {\"url\": \"https://registry.npmjs.org/electron\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
-        "dest-filename": "e89003971838ea229443cc8ba2379db489a60ad91ddf0bc8c943bee79126",
-        "dest": "flatpak-node/npm-cache/_cacache/index-v5/da/f2"
     },
     {
         "type": "inline",
@@ -4321,6 +4315,12 @@
         "contents": "c1c245f3cf0d2494cc281a05cda8101beb5cc759\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/rc/-/rc-1.2.8.tgz\", \"integrity\": \"sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==\", \"time\": 0, \"size\": 7148, \"metadata\": {\"url\": \"https://registry.npmjs.org/rc/-/rc-1.2.8.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "a04814db2ad4ffc42301c0c6d493aa88bb7e546e15b6c7890c5d1d124d92",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/17/54"
+    },
+    {
+        "type": "inline",
+        "contents": "c1d1385c45c7ec4c1cd1f0ed44c2207603570996\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/electron\", \"integrity\": \"sha256-+kgVmLofKMchMmm7TcBDuaq37Zck+m0EqLjjpwqtYYI=\", \"time\": 0, \"size\": 2473, \"metadata\": {\"url\": \"https://registry.npmjs.org/electron\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "e89003971838ea229443cc8ba2379db489a60ad91ddf0bc8c943bee79126",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/da/f2"
     },
     {
         "type": "inline",
@@ -5489,17 +5489,17 @@
     },
     {
         "type": "inline",
-        "contents": "eyJ2ZXJzaW9ucyI6IHsiMTYuMC43IjogeyJtYWluIjogImluZGV4LmpzIiwgInR5cGVzIjogImVsZWN0cm9uLmQudHMiLCAiYmluIjogeyJlbGVjdHJvbiI6ICJjbGkuanMifSwgInNjcmlwdHMiOiB7InBvc3RpbnN0YWxsIjogIm5vZGUgaW5zdGFsbC5qcyJ9LCAiZGVwZW5kZW5jaWVzIjogeyJAZWxlY3Ryb24vZ2V0IjogIl4xLjEzLjAiLCAiQHR5cGVzL25vZGUiOiAiXjE0LjYuMiIsICJleHRyYWN0LXppcCI6ICJeMS4wLjMifSwgImVuZ2luZXMiOiB7Im5vZGUiOiAiPj0gOC42In0sICJuYW1lIjogImVsZWN0cm9uIiwgInZlcnNpb24iOiAiMTYuMC43IiwgInJlcG9zaXRvcnkiOiB7InR5cGUiOiAiZ2l0IiwgInVybCI6ICJnaXQraHR0cHM6Ly9naXRodWIuY29tL2VsZWN0cm9uL2VsZWN0cm9uLmdpdCJ9LCAiZGVzY3JpcHRpb24iOiAiQnVpbGQgY3Jvc3MgcGxhdGZvcm0gZGVza3RvcCBhcHBzIHdpdGggSmF2YVNjcmlwdCwgSFRNTCwgYW5kIENTUyIsICJsaWNlbnNlIjogIk1JVCIsICJhdXRob3IiOiB7Im5hbWUiOiAiRWxlY3Ryb24gQ29tbXVuaXR5In0sICJrZXl3b3JkcyI6IFsiZWxlY3Ryb24iXSwgIl9yZXNvbHZlZCI6ICIiLCAiX2ludGVncml0eSI6ICIiLCAiX2Zyb20iOiAiZmlsZTovdG1wL2VsZWN0cm9uLW5wbTEyMjAxMS0xODM0LTFsNmszZDgubXNpdi9lbGVjdHJvbi0xNi4wLjcudGd6IiwgImJ1Z3MiOiB7InVybCI6ICJodHRwczovL2dpdGh1Yi5jb20vZWxlY3Ryb24vZWxlY3Ryb24vaXNzdWVzIn0sICJob21lcGFnZSI6ICJodHRwczovL2dpdGh1Yi5jb20vZWxlY3Ryb24vZWxlY3Ryb24jcmVhZG1lIiwgIl9pZCI6ICJlbGVjdHJvbkAxNi4wLjciLCAiX25vZGVWZXJzaW9uIjogIjE0LjE4LjEiLCAiX25wbVZlcnNpb24iOiAiNi4xNC4xNSIsICJkaXN0IjogeyJpbnRlZ3JpdHkiOiAic2hhNTEyLS9JTXdwQmYyc3ZoQTFYLzdRNThSVitObjBmdlVKc0huaUc0VGl6YU83cTRpS0ZZU1E2aEJ2c0x6K2N5bGNaOGhSTUttVnk1RzFYYU1OSklEMmFoMjN3PT0iLCAic2hhc3VtIjogIjg3ZWFjY2QwNWFiNjE1NjNkM2MxN2RmYmFkMjk0OWJiYTdlYWQxNjIiLCAidGFyYmFsbCI6ICJodHRwczovL3JlZ2lzdHJ5Lm5wbWpzLm9yZy9lbGVjdHJvbi8tL2VsZWN0cm9uLTE2LjAuNy50Z3oiLCAiZmlsZUNvdW50IjogOCwgInVucGFja2VkU2l6ZSI6IDc0MTYwMCwgIm5wbS1zaWduYXR1cmUiOiAiLS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS1cclxuVmVyc2lvbjogT3BlblBHUC5qcyB2My4wLjEzXHJcbkNvbW1lbnQ6IGh0dHBzOi8vb3BlbnBncGpzLm9yZ1xyXG5cclxud3NGY0JBRUJDQUFRQlFKaDNkOE9DUkE5VFZzU0FuWldhZ0FBSDdvUC9SZ2p2elJNR096a3B1b1JRaTMwXG5adXcreGl6azdHWGxCQjBmK2Rpd3d0aXZha1ZDU1F6Vi8wNmpoTFNUNnYrU2NsSGdNeFRZeGtkM0NLN2lcbkVtU0p2SktMVGJDMk1CcTdmM2NLb3o2T2ZxdnRUL3d4b3FGalFIdDE5d2pOZjMrUUYxcVhEcHdNUnkrOVxucHFpMXVmMjlXMmZnQi9jeDRsZzFuMDBFbzBqUjJsNERDMEVibjF3NmpmVGdJL1YyRDZ1NnJlMzAyUlFBXG5KUlovbHRtQWtVUHJXTnE0eG0zVUlhaWpQcnNIMURuU2pKaTZrcEVZck0vblpIcXg2bCtHMTZpU2w5aDdcbml3WjdHbnJXUXRWd2ZaWnpaL2VNaCtXT3BBUEpIWldKeEJJb1JWMW5SaTdOenY1dnUrWTZ3MFBKaG95Tlxud1FveDNNbWI5Qlp4SU1EbUNTcE1BT0YwYnhPUTg2Y0VLRUJ5NVNkSDZmby81aTd4d3ZNcGRSQTRMcG90XG5EMVhxVElCRXBucWlrWWoyWEpyaTdqcUNrN0d4WnE0RUtTV0xqWVJ5YlhRYW1RNGVrS25LbHVUSXFuVWJcbjdoZkdlcDJoWTBYMm55azk2alNKR0FEZjZDRHY5UE5aeFkzT1J2THAxOC9vUEFKMUdjT2tSMUlwTTlaUlxuM1RsWWlSNHRySHhBSnNmUWhpQ1JVRnZOM2crckJTcmc0d0ZzcHhNODIvU1RsZlFqN29LZDF3WmVDNWd1XG5raEdsVWJsaXpFUHMzTUcxbk9mZld5eTdkV1pTQm5oNVIwdTRCbVVFdk5tcmhmUnRsVmNuK2U5aFo3Vk1cbkY2SWJRVzlxaUFrN3o3ZTU3ZU14N1NnNjVqTEY0aWdrVFdyZ2x1SnlVckhiOGpYUFl1bWVjcEx2ZnRqZ1xuUmZyUVxyXG49bTFFQVxyXG4tLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS1cclxuIn0sICJfbnBtVXNlciI6IHsibmFtZSI6ICJlbGVjdHJvbi1uaWdodGx5IiwgImVtYWlsIjogImluZm9AZWxlY3Ryb25qcy5vcmcifSwgImRpcmVjdG9yaWVzIjoge30sICJtYWludGFpbmVycyI6IFt7Im5hbWUiOiAiZWxlY3Ryb24iLCAiZW1haWwiOiAiZWxlY3Ryb25AZ2l0aHViLmNvbSJ9LCB7Im5hbWUiOiAiZWxlY3Ryb24tbmlnaHRseSIsICJlbWFpbCI6ICJpbmZvQGVsZWN0cm9uanMub3JnIn1dLCAiX25wbU9wZXJhdGlvbmFsSW50ZXJuYWwiOiB7Imhvc3QiOiAiczM6Ly9ucG0tcmVnaXN0cnktcGFja2FnZXMiLCAidG1wIjogInRtcC9lbGVjdHJvbl8xNi4wLjdfMTY0MTkzMDUxMDI3M18wLjgzNzk0NzI2MTI0NzYxMzMifSwgIl9oYXNTaHJpbmt3cmFwIjogZmFsc2V9fX0=",
-        "base64": true,
-        "dest-filename": "fbca0ddbad2c3e8e6433a452753bbab3f381b59a020fa76bbcaad7b70828",
-        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha256/5a/fd"
-    },
-    {
-        "type": "inline",
         "contents": "eyJ2ZXJzaW9ucyI6IHsiMTcuMC44IjogeyJuYW1lIjogIkB0eXBlcy95YXJncyIsICJ2ZXJzaW9uIjogIjE3LjAuOCIsICJkZXNjcmlwdGlvbiI6ICJUeXBlU2NyaXB0IGRlZmluaXRpb25zIGZvciB5YXJncyIsICJob21lcGFnZSI6ICJodHRwczovL2dpdGh1Yi5jb20vRGVmaW5pdGVseVR5cGVkL0RlZmluaXRlbHlUeXBlZC90cmVlL21hc3Rlci90eXBlcy95YXJncyIsICJsaWNlbnNlIjogIk1JVCIsICJjb250cmlidXRvcnMiOiBbeyJuYW1lIjogIk1hcnRpbiBQb2Vsc3RyYSIsICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL3BvZWxzdHJhIiwgImdpdGh1YlVzZXJuYW1lIjogInBvZWxzdHJhIn0sIHsibmFtZSI6ICJNaXp1bmFzaGkgTWFuYSIsICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL21penVuYXNoaS1tYW5hIiwgImdpdGh1YlVzZXJuYW1lIjogIm1penVuYXNoaS1tYW5hIn0sIHsibmFtZSI6ICJKZWZmZXJ5IEdyYWprb3dza2kiLCAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9wdXNocGxheSIsICJnaXRodWJVc2VybmFtZSI6ICJwdXNocGxheSJ9LCB7Im5hbWUiOiAiSmltaSAoRGltaXRyaXMpIENoYXJhbGFtcGlkaXMiLCAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9KaW1pQyIsICJnaXRodWJVc2VybmFtZSI6ICJKaW1pQyJ9LCB7Im5hbWUiOiAiU3RlZmZlbiBWaWtlbiBWYWx2XHUwMGU1ZyIsICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL3N0ZWZmZW52diIsICJnaXRodWJVc2VybmFtZSI6ICJzdGVmZmVudnYifSwgeyJuYW1lIjogIkVtaWx5IE1hcmlnb2xkIEtsYXNzZW4iLCAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9mb3JpdmFsbCIsICJnaXRodWJVc2VybmFtZSI6ICJmb3JpdmFsbCJ9LCB7Im5hbWUiOiAiRXhFIEJvc3MiLCAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9FeEUtQm9zcyIsICJnaXRodWJVc2VybmFtZSI6ICJFeEUtQm9zcyJ9LCB7Im5hbWUiOiAiQWFua2hlbiIsICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL0FhbmtoZW4iLCAiZ2l0aHViVXNlcm5hbWUiOiAiQWFua2hlbiJ9LCB7Im5hbWUiOiAiQmVuIENvZSIsICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL2Jjb2UiLCAiZ2l0aHViVXNlcm5hbWUiOiAiYmNvZSJ9XSwgIm1haW4iOiAiIiwgInR5cGVzIjogImluZGV4LmQudHMiLCAidHlwZXNWZXJzaW9ucyI6IHsiPD00LjEiOiB7IioiOiBbInRzNC4xLyoiXX19LCAicmVwb3NpdG9yeSI6IHsidHlwZSI6ICJnaXQiLCAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9EZWZpbml0ZWx5VHlwZWQvRGVmaW5pdGVseVR5cGVkLmdpdCIsICJkaXJlY3RvcnkiOiAidHlwZXMveWFyZ3MifSwgInNjcmlwdHMiOiB7fSwgImRlcGVuZGVuY2llcyI6IHsiQHR5cGVzL3lhcmdzLXBhcnNlciI6ICIqIn0sICJ0eXBlc1B1Ymxpc2hlckNvbnRlbnRIYXNoIjogIjJmZjgxZDUxYTc4NDYzMDg3MzY3NjVmZDgwZWYzODVlNGQ2OTAxZWE1MzY3Y2RhZGNjMzcwYTU4YTRjYzFiZGEiLCAidHlwZVNjcmlwdFZlcnNpb24iOiAiMy44IiwgImV4cG9ydHMiOiB7Ii4iOiB7InR5cGVzIjogeyJpbXBvcnQiOiAiLi9pbmRleC5kLm10cyIsICJkZWZhdWx0IjogIi4vaW5kZXguZC50cyJ9fSwgIi4vaGVscGVycyI6IHsidHlwZXMiOiB7ImltcG9ydCI6ICIuL2hlbHBlcnMuZC5tdHMiLCAiZGVmYXVsdCI6ICIuL2hlbHBlcnMuZC50cyJ9fSwgIi4veWFyZ3MiOiB7InR5cGVzIjogeyJkZWZhdWx0IjogIi4veWFyZ3MuZC50cyJ9fSwgIi4vcGFja2FnZS5qc29uIjogIi4vcGFja2FnZS5qc29uIn0sICJfaWQiOiAiQHR5cGVzL3lhcmdzQDE3LjAuOCIsICJkaXN0IjogeyJpbnRlZ3JpdHkiOiAic2hhNTEyLXdEZVV3aVVtZW05RnpzeXlzRXdSdWthRWRETmN3YlJPdlE5UUdSS2FMSTZ0K0lsdE56Ym40L2k0YXNtQjEwYXV2WkdRQ3pTUTZ0MEdTY3pFVGhsVVh3PT0iLCAic2hhc3VtIjogImQyM2EzNDc2ZmQzZGE4YTBlYTQ0YjU0OTRjYTdmYTY3N2I5ZGFkNGMiLCAidGFyYmFsbCI6ICJodHRwczovL3JlZ2lzdHJ5Lm5wbWpzLm9yZy9AdHlwZXMveWFyZ3MvLS95YXJncy0xNy4wLjgudGd6IiwgImZpbGVDb3VudCI6IDEwLCAidW5wYWNrZWRTaXplIjogMTA3MTQwLCAibnBtLXNpZ25hdHVyZSI6ICItLS0tLUJFR0lOIFBHUCBTSUdOQVRVUkUtLS0tLVxyXG5WZXJzaW9uOiBPcGVuUEdQLmpzIHYzLjAuMTNcclxuQ29tbWVudDogaHR0cHM6Ly9vcGVucGdwanMub3JnXHJcblxyXG53c0ZjQkFFQkNBQVFCUUpodzlHRENSQTlUVnNTQW5aV2FnQUFlQVlQL0E0SHJpQmk2Z255cExRQXZqaWtcbnJJb2xOc25rdWpIcFhFZG5wZktLWjUyUWViYm1DblJ0NTAwZHhuLzRkcHJScmR1R0hkVUV3MTdyLzZsdVxuWTFWa2Nyd1hENXNkZDltUmZYRXJTWjFzMVZqSnkwa3FoZExoLzUveTRQR2U3bmMyT0QzS3JjZDZoRUFZXG5lM0JhUlh5clpHQ3duRkFnVUxucW9vck1HTzNYc0FQaEFsVDZzdTh1NUtnWFdsTkRjQWtEcG9sOTN6dkJcbnJ0QVFiSWV2TktwQXY1aERpZkhaRmRXRFQ0YTN0bFZiWGNzeGpyMXVCNUVQVytib1piOWJDdEtKNmZOeFxua3RyVWdUY3hRcWZNRy9BRVREWHdETCt3UGNXMm4vSCtORHZ1eGpjb3JuOWdFOHlDM2NuWDQ3OFkzOFJXXG5qanU5dU00aDJHRmlUYU1Cd1F3am50eXNUNUFIc3BVWjFYSUxTTHhVMW1wRm9qNGtKVTFla1BaajJuVW9cbjg1em5JZGswWVlicG9QbTRwWXBmcFpkazFBb1JKbFV5YXFvZmhIK0M1SVpaS0IvQm4wVWd0TkR0TTNpa1xuY2FiWTNkcUFibXZpL1h1MitzMGpPUTN6SktiYXRRcWJyZjQzQ2dTWmdLbmUvZkJaYW9NU1FuNzR0dU5TXG5oNlpkS2FyWXhGUjZPU3lGM1BMNW82RlpWRkd0KzRiOGtTek9jcWhWZUtubUZSRXdzdzlPazRRbEpvZlBcbmNET1UzUWVwWVBpSWF4Umg0b0tvd0gvK05BaGZpUWZ4R3Z0cUNiRHZlOFM1djdQUjU5THpWYkJpZjNvUlxuNXpvQjlpQzVpT1ZGdkwxT3VHbDdSVU9BZWYvOXlZTERvZFRzQ05lV1VPUElPRklLQ3A1T0JmNjduWWlPXG54czdIXHJcbj14cnArXHJcbi0tLS0tRU5EIFBHUCBTSUdOQVRVUkUtLS0tLVxyXG4ifSwgIl9ucG1Vc2VyIjogeyJuYW1lIjogInR5cGVzIiwgImVtYWlsIjogInRzLW5wbS10eXBlc0BtaWNyb3NvZnQuY29tIn0sICJkaXJlY3RvcmllcyI6IHt9LCAibWFpbnRhaW5lcnMiOiBbeyJuYW1lIjogInR5cGVzIiwgImVtYWlsIjogInRzLW5wbS10eXBlc0BtaWNyb3NvZnQuY29tIn1dLCAiX25wbU9wZXJhdGlvbmFsSW50ZXJuYWwiOiB7Imhvc3QiOiAiczM6Ly9ucG0tcmVnaXN0cnktcGFja2FnZXMiLCAidG1wIjogInRtcC95YXJnc18xNy4wLjhfMTY0MDIyMzEwNzE1Nl8wLjIxMjM5OTE4NzU5MjMxOTY4In0sICJfaGFzU2hyaW5rd3JhcCI6IGZhbHNlfX19",
         "base64": true,
         "dest-filename": "d5769959cdadce5b27492aeeacd8f83c4ce6c278e1dd13f337ba71eecd09",
         "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha256/f5/e0"
+    },
+    {
+        "type": "inline",
+        "contents": "eyJ2ZXJzaW9ucyI6IHsiMTcuMC4wIjogeyJtYWluIjogImluZGV4LmpzIiwgInR5cGVzIjogImVsZWN0cm9uLmQudHMiLCAiYmluIjogeyJlbGVjdHJvbiI6ICJjbGkuanMifSwgInNjcmlwdHMiOiB7InBvc3RpbnN0YWxsIjogIm5vZGUgaW5zdGFsbC5qcyJ9LCAiZGVwZW5kZW5jaWVzIjogeyJAZWxlY3Ryb24vZ2V0IjogIl4xLjEzLjAiLCAiQHR5cGVzL25vZGUiOiAiXjE0LjYuMiIsICJleHRyYWN0LXppcCI6ICJeMS4wLjMifSwgImVuZ2luZXMiOiB7Im5vZGUiOiAiPj0gOC42In0sICJuYW1lIjogImVsZWN0cm9uIiwgInZlcnNpb24iOiAiMTcuMC4wIiwgInJlcG9zaXRvcnkiOiB7InR5cGUiOiAiZ2l0IiwgInVybCI6ICJnaXQraHR0cHM6Ly9naXRodWIuY29tL2VsZWN0cm9uL2VsZWN0cm9uLmdpdCJ9LCAiZGVzY3JpcHRpb24iOiAiQnVpbGQgY3Jvc3MgcGxhdGZvcm0gZGVza3RvcCBhcHBzIHdpdGggSmF2YVNjcmlwdCwgSFRNTCwgYW5kIENTUyIsICJsaWNlbnNlIjogIk1JVCIsICJhdXRob3IiOiB7Im5hbWUiOiAiRWxlY3Ryb24gQ29tbXVuaXR5In0sICJrZXl3b3JkcyI6IFsiZWxlY3Ryb24iXSwgIl9yZXNvbHZlZCI6ICIiLCAiX2ludGVncml0eSI6ICIiLCAiX2Zyb20iOiAiZmlsZTovdG1wL2VsZWN0cm9uLW5wbTEyMjAzMS0xMzcwLXllZHhzeS5xOHNpL2VsZWN0cm9uLTE3LjAuMC50Z3oiLCAiYnVncyI6IHsidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9lbGVjdHJvbi9lbGVjdHJvbi9pc3N1ZXMifSwgImhvbWVwYWdlIjogImh0dHBzOi8vZ2l0aHViLmNvbS9lbGVjdHJvbi9lbGVjdHJvbiNyZWFkbWUiLCAiX2lkIjogImVsZWN0cm9uQDE3LjAuMCIsICJfbm9kZVZlcnNpb24iOiAiMTQuMTguMSIsICJfbnBtVmVyc2lvbiI6ICI2LjE0LjE1IiwgImRpc3QiOiB7ImludGVncml0eSI6ICJzaGE1MTItM1VYY0JRTXdiTVdkUHZHSGFTZFBNbHVIcmQrL2JjK0sxNDNNeXZFNXpWWitTMVhDSHQ0c2F1N2RqNnN2SkhuczVsbE4wWUcvYzZoL3ZSZmFkSXA4Wmc9PSIsICJzaGFzdW0iOiAiNjBmMDBmM2UzYzY1NzAyMGU4MDdhNTE5NzAwMjEzOTQzNDY4YjRkMSIsICJ0YXJiYWxsIjogImh0dHBzOi8vcmVnaXN0cnkubnBtanMub3JnL2VsZWN0cm9uLy0vZWxlY3Ryb24tMTcuMC4wLnRneiIsICJmaWxlQ291bnQiOiA4LCAidW5wYWNrZWRTaXplIjogNzQ0Mzk5LCAibnBtLXNpZ25hdHVyZSI6ICItLS0tLUJFR0lOIFBHUCBTSUdOQVRVUkUtLS0tLVxyXG5WZXJzaW9uOiBPcGVuUEdQLmpzIHYzLjAuMTNcclxuQ29tbWVudDogaHR0cHM6Ly9vcGVucGdwanMub3JnXHJcblxyXG53c0ZjQkFFQkNBQVFCUUpoK0paYUNSQTlUVnNTQW5aV2FnQUFQR1VQLzFGZ2JFMk5MeXVpQ1FUU1crQVpcbmtlM3JGbnMrRGlXdU4rNVZXbnVOV0g2MUJMR3U1NjFPYTdzdG5ubUNzQk1tSTZ2cW1laGVPY0loUTR5b1xueTFLdVo1NTNCeVRxaDBJQW1aTVBPbmZPK3hDakNzTXhzcFFOYSs5WkVlOGJrbW5pMUd0aTg2WVBSZVdQXG5EYWZ3T3RJY1hodVgySHZyZnVWQ215dnhDTmtQeUNvSnEvZmFTZG0yb0tldUhCdS84WGFveVFneW9uVWlcbktvd3lhZDNqOUpJT0xqakdpQ0hwcmJHNU1nOUc4VGc1WGpLNmE4NFNWcW0zMnBJaUhzSlBYS2NWM3Yvb1xuWnl2VlBkK054RDNGc3g3R1EwTStiNVBDSUhVLzI3TTNETElBczljb3JDY0tPcEdGeUxHR21jS1VPY3RkXG5rczQvMUF3bytRQ2N0ZmJ0R1U2dCtldWFGRkdTSWNXU2xyZkJLb0JtaGFuOS9ab3dTa0RJZURldHd6T2xcbk9jd3ZJR3V6YVBPeEQyQU4zaGx0V3plTmk2U1kvVU5vRU00WEszTnNJQy9nNHVyM283dVgwWUdxTUh2cVxuc1lMdU5QOU1BQUNmYTlpY0pONmxwMVVWR1hacmZSTWN0bXptZmRZcFdNaDBvZlY3cWlrN0JHYlVzS09BXG5tSUIzOXovU0pCL0tXcTdBQzN4UGFYWHdQR2JJZjczRGFDeVJJS0h4TWlXcEc0ZmtqUkVUTTA5KzIwSTBcbko4Qm05OE1WZWNNVzFaK1JSMjF2V2cvWTY5ZWFEK0Y4dnZpcnJmdTJid0VQR2NnZWhmRy9DTHFib1U5SlxuNlEraUVFamhzMXpxUW1tdjF6QlNySHV6Qk5UN2N6M053Rm1vZ3l1NkhLZnczZVppNEhHbTl1SW9zaW1DXG5sV1RZXHJcbj15dGx6XHJcbi0tLS0tRU5EIFBHUCBTSUdOQVRVUkUtLS0tLVxyXG4ifSwgIl9ucG1Vc2VyIjogeyJuYW1lIjogImVsZWN0cm9uLW5pZ2h0bHkiLCAiZW1haWwiOiAiaW5mb0BlbGVjdHJvbmpzLm9yZyJ9LCAiZGlyZWN0b3JpZXMiOiB7fSwgIm1haW50YWluZXJzIjogW3sibmFtZSI6ICJlbGVjdHJvbiIsICJlbWFpbCI6ICJlbGVjdHJvbkBnaXRodWIuY29tIn0sIHsibmFtZSI6ICJlbGVjdHJvbi1uaWdodGx5IiwgImVtYWlsIjogImluZm9AZWxlY3Ryb25qcy5vcmcifV0sICJfbnBtT3BlcmF0aW9uYWxJbnRlcm5hbCI6IHsiaG9zdCI6ICJzMzovL25wbS1yZWdpc3RyeS1wYWNrYWdlcyIsICJ0bXAiOiAidG1wL2VsZWN0cm9uXzE3LjAuMF8xNjQzNjgxMzY5ODk1XzAuMzM2NDY4MDI2MjQ5MzA0NSJ9LCAiX2hhc1Nocmlua3dyYXAiOiBmYWxzZX19fQ==",
+        "base64": true,
+        "dest-filename": "1598ba1f28c7213269bb4dc043b9aab7ed9724fa6d04a8b8e3a70aad6182",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha256/fa/48"
     },
     {
         "type": "inline",
@@ -6863,10 +6863,10 @@
     {
         "type": "shell",
         "commands": [
-            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-arm64.zip\"",
-            "ln -s \"../electron-v16.0.7-linux-arm64.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-arm64.zip/electron-v16.0.7-linux-arm64.zip\"",
-            "mkdir -p \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f\"",
-            "ln -s \"../electron-v16.0.7-linux-arm64.zip\" \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f/electron-v16.0.7-linux-arm64.zip\""
+            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-arm64.zip\"",
+            "ln -s \"../electron-v17.0.0-linux-arm64.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-arm64.zip/electron-v17.0.0-linux-arm64.zip\"",
+            "mkdir -p \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38\"",
+            "ln -s \"../electron-v17.0.0-linux-arm64.zip\" \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38/electron-v17.0.0-linux-arm64.zip\""
         ],
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
@@ -6876,10 +6876,10 @@
     {
         "type": "shell",
         "commands": [
-            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-armv7l.zip\"",
-            "ln -s \"../electron-v16.0.7-linux-armv7l.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-armv7l.zip/electron-v16.0.7-linux-armv7l.zip\"",
-            "mkdir -p \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f\"",
-            "ln -s \"../electron-v16.0.7-linux-armv7l.zip\" \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f/electron-v16.0.7-linux-armv7l.zip\""
+            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-armv7l.zip\"",
+            "ln -s \"../electron-v17.0.0-linux-armv7l.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-armv7l.zip/electron-v17.0.0-linux-armv7l.zip\"",
+            "mkdir -p \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38\"",
+            "ln -s \"../electron-v17.0.0-linux-armv7l.zip\" \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38/electron-v17.0.0-linux-armv7l.zip\""
         ],
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
@@ -6889,10 +6889,10 @@
     {
         "type": "shell",
         "commands": [
-            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-ia32.zip\"",
-            "ln -s \"../electron-v16.0.7-linux-ia32.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-ia32.zip/electron-v16.0.7-linux-ia32.zip\"",
-            "mkdir -p \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f\"",
-            "ln -s \"../electron-v16.0.7-linux-ia32.zip\" \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f/electron-v16.0.7-linux-ia32.zip\""
+            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-ia32.zip\"",
+            "ln -s \"../electron-v17.0.0-linux-ia32.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-ia32.zip/electron-v17.0.0-linux-ia32.zip\"",
+            "mkdir -p \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38\"",
+            "ln -s \"../electron-v17.0.0-linux-ia32.zip\" \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38/electron-v17.0.0-linux-ia32.zip\""
         ],
         "dest": "flatpak-node/cache/electron",
         "only-arches": [
@@ -6902,10 +6902,10 @@
     {
         "type": "shell",
         "commands": [
-            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-x64.zip\"",
-            "ln -s \"../electron-v16.0.7-linux-x64.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv16.0.7electron-v16.0.7-linux-x64.zip/electron-v16.0.7-linux-x64.zip\"",
-            "mkdir -p \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f\"",
-            "ln -s \"../electron-v16.0.7-linux-x64.zip\" \"55bbda32525c6de36f9f8b21c2fab9b1361c0db3f63ea7972529c4e08a18559f/electron-v16.0.7-linux-x64.zip\""
+            "mkdir -p \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-x64.zip\"",
+            "ln -s \"../electron-v17.0.0-linux-x64.zip\" \"httpsgithub.comelectronelectronreleasesdownloadv17.0.0electron-v17.0.0-linux-x64.zip/electron-v17.0.0-linux-x64.zip\"",
+            "mkdir -p \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38\"",
+            "ln -s \"../electron-v17.0.0-linux-x64.zip\" \"dbd8fc4d3473df2ea591cc63bf1d944b47138489e384122e9dffcb2fe4046a38/electron-v17.0.0-linux-x64.zip\""
         ],
         "dest": "flatpak-node/cache/electron",
         "only-arches": [

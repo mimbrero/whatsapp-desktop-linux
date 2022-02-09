@@ -33,6 +33,7 @@ export default class WhatsApp {
 
         window.setMenu(null);
         window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT }); // TODO: Offline checker & "Computer not connected" page
+        window.webContents.reloadIgnoringCache(); // weird Chrome version bug
 
         return window;
     }

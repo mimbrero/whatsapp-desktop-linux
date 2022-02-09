@@ -62,7 +62,7 @@ export default class WhatsApp {
             }
 
             else if (input.key.toLowerCase() === 'f5' || (input.control && input.key.toLowerCase() === 'r')) {
-                this.window.reload();
+                this.window.webContents.reloadIgnoringCache();
             }
         });
     }

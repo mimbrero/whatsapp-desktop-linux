@@ -22,7 +22,7 @@ export default class HotkeyManager {
         });
     }
 
-    public add(clickAction: ClickAction) {
-        this.actions.push(clickAction);
+    public add(...clickAction: ClickAction[]) {
+        clickAction.forEach(action => this.actions.push(action));
     }
 };

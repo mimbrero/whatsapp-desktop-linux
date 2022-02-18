@@ -1,20 +1,25 @@
 import { BrowserWindow, ipcMain, shell } from 'electron';
 import path from 'path';
+import HotkeyManager from './hotkey-manager';
 import WindowSettings from './settings/window-settings';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36';
 
 export default class WhatsApp {
+    private readonly hotkeyManager = new HotkeyManager();
     private readonly windowSettings = new WindowSettings();
+
     private window: BrowserWindow;
 
     public init() {
         this.window = this.createWindow();
-        this.windowSettings.applySettings(this.window);
 
         this.makeLinksOpenInBrowser();
         this.registerListeners();
         this.registerHotkeys();
+
+        this.hotkeyManager.register(this.window);
+        this.windowSettings.applySettings(this.window);
     }
 
     private createWindow() {
@@ -56,14 +61,21 @@ export default class WhatsApp {
     }
 
     private registerHotkeys() {
-        this.window.webContents.on('before-input-event', (_event, input) => {
-            if (input.control && (input.key.toLowerCase() === 'q' || input.key.toLowerCase() === 'w')) {
-                this.window.close();
-            }
+        this.hotkeyManager.add({
+            keys: ["F5"],
+            action: () => this.window.webContents.reloadIgnoringCache()
+        });
 
-            else if (input.key.toLowerCase() === 'f5' || (input.control && input.key.toLowerCase() === 'r')) {
-                this.window.webContents.reloadIgnoringCache();
-            }
+        this.hotkeyManager.add({
+            control: true,
+            keys: ["R"],
+            action: () => this.window.webContents.reloadIgnoringCache()
+        });
+
+        this.hotkeyManager.add({
+            control: true,
+            keys: ["Q", "W"],
+            action: () => this.window.close()
         });
     }
 };

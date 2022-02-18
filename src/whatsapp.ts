@@ -62,6 +62,30 @@ export default class WhatsApp {
 
     private registerHotkeys() {
         this.hotkeyManager.add({
+            control: true,
+            keys: ["+"],
+            action: () => {
+                if (this.window.webContents.getZoomFactor() < 3)
+                    this.window.webContents.zoomLevel += 1
+            }
+        });
+
+        this.hotkeyManager.add({
+            control: true,
+            keys: ["0"],
+            action: () => this.window.webContents.setZoomLevel(0)
+        });
+
+        this.hotkeyManager.add({
+            control: true,
+            keys: ["-"],
+            action: () => {
+                if (this.window.webContents.getZoomFactor() > 0.5)
+                    this.window.webContents.zoomLevel -= 1
+            }
+        });
+
+        this.hotkeyManager.add({
             keys: ["F5"],
             action: () => this.window.webContents.reloadIgnoringCache()
         });

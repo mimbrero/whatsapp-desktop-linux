@@ -8,7 +8,6 @@
   <project_license>MIT</project_license>
 
   <description>
-    <p>Unofficial WhatsApp Desktop client.</p>
     <p>With WhatsApp on the desktop, you can seamlessly sync all of your chats to your computer so that you can chat on whatever device is most convenient to you.</p>
     <p>NOTE: This wrapper is not verified by, affiliated with, or supported by WhatsApp Inc.</p>
   </description>
@@ -17,24 +16,25 @@
   <url type="homepage">https://github.com/mimbrero/whatsapp-desktop-linux</url>
 
   <releases>
-    <release version="1.1.1" date="2022-02-09">
+    <release version="1.2.0" date="2022-02-23">
       <description>
         <ul>
-          <li>Fix version bug when the server sends an update</li>
+          <li>New tray icon</li>
+          <li>WhatsApp can now minimize to tray</li>
+          <li>Scaling the window is now possible with Ctrl+"+", Ctrl+0 and Ctrl+"-"</li>
         </ul>
       </description>
     </release>
+    <release version="1.1.1" date="2022-02-09" />
     <release version="1.1.0" date="2022-02-03">
       <description>
         <ul>
           <li>Clicking a notification now focuses the window</li>
-          <li>The Ctrl + Q and Ctrl + W hotkeys now quit the application</li>
+          <li>Quit WhatsApp with Ctrl+Q and Ctrl+W</li>
         </ul>
       </description>
     </release>
-
     <release version="1.0.1" date="2022-01-28" />
-
     <release version="1.0" date="2022-01-17">
       <description>
         <p>First release!</p>

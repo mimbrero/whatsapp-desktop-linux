@@ -112,8 +112,13 @@ export default class WhatsApp {
             },
             {
                 control: true,
-                keys: ["Q", "W"],
+                keys: ["W"],
                 action: () => this.window.close()
+            },
+            {
+                control: true,
+                keys: ["Q"],
+                action: () => this.app.quit()
             }
         );
     }

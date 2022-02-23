@@ -35,7 +35,7 @@ export default class WhatsApp {
         this.trayManager = new TrayManager(this.app, this.window);
     }
 
-    public async init() {
+    public init() {
         this.makeLinksOpenInBrowser();
         this.registerListeners();
         this.registerHotkeys();
@@ -46,10 +46,12 @@ export default class WhatsApp {
 
         this.quitting = true; // if Internet connection isn't available, closing the window should quit the app
 
-        await this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
+        this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
         this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
 
-        this.quitting = false;
+        this.window.webContents.on('did-finish-load', () => {
+            this.quitting = false;
+        });
     }
 
     private makeLinksOpenInBrowser() {

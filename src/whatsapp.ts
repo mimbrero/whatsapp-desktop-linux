@@ -1,6 +1,7 @@
 import { App, BrowserWindow, ipcMain, shell } from 'electron';
 import path from 'path';
 import HotkeyManager from './hotkey-manager';
+import TrayManager from './tray-manager';
 import WindowSettings from './settings/window-settings';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36';
@@ -8,6 +9,7 @@ const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
 export default class WhatsApp {
 
     private readonly hotkeyManager: HotkeyManager;
+    private readonly trayManager: TrayManager;
     private readonly windowSettings = new WindowSettings();
 
     private readonly window: BrowserWindow;
@@ -29,6 +31,7 @@ export default class WhatsApp {
         this.window.setMenu(null);
 
         this.hotkeyManager = new HotkeyManager(this.window);
+        this.trayManager = new TrayManager(this.app, this.window);
     }
 
     public init() {
@@ -40,6 +43,7 @@ export default class WhatsApp {
         this.registerHotkeys();
 
         this.hotkeyManager.init();
+        this.trayManager.init();
         this.windowSettings.applySettings(this.window);
     }
 

@@ -11,6 +11,7 @@ export default class TrayManager {
         this.window.webContents.on("page-favicon-updated", (_event, urls) => this.updateIcon(urls[urls.length - 1]));
         this.window.on('focus', () => this.updateMenu());
         this.window.on('blur', () => this.updateMenu());
+        this.window.on('close', () => this.updateMenu());
     }
 
     private createTray(image: NativeImage) {

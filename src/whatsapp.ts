@@ -14,6 +14,8 @@ export default class WhatsApp {
 
     private readonly window: BrowserWindow;
 
+    private quitting = false;
+
     constructor(private readonly app: App) {
         this.window = new BrowserWindow({
             title: 'WhatsApp',
@@ -64,8 +66,15 @@ export default class WhatsApp {
 
         ipcMain.on('notification-click', () => this.window.show());
 
+        this.app.on('before-quit', () => this.quitting = true);
+
         this.window.on('close', event => {
-            this.windowSettings.saveSettings(this.window);
+            if (this.quitting) {
+                this.windowSettings.saveSettings(this.window);
+            } else {
+                event.preventDefault();
+                this.window.hide()
+            }
         });
     }
 

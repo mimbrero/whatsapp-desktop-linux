@@ -1,4 +1,4 @@
-import { BrowserWindow, ipcMain, shell } from 'electron';
+import { App, BrowserWindow, ipcMain, shell } from 'electron';
 import path from 'path';
 import HotkeyManager from './hotkey-manager';
 import WindowSettings from './settings/window-settings';
@@ -6,24 +6,14 @@ import WindowSettings from './settings/window-settings';
 const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36';
 
 export default class WhatsApp {
-    private readonly hotkeyManager = new HotkeyManager();
+
+    private readonly hotkeyManager: HotkeyManager;
     private readonly windowSettings = new WindowSettings();
 
-    private window: BrowserWindow;
+    private readonly window: BrowserWindow;
 
-    public init() {
-        this.window = this.createWindow();
-
-        this.makeLinksOpenInBrowser();
-        this.registerListeners();
-        this.registerHotkeys();
-
-        this.hotkeyManager.register(this.window);
-        this.windowSettings.applySettings(this.window);
-    }
-
-    private createWindow() {
-        const window = new BrowserWindow({
+    constructor(private readonly app: App) {
+        this.window = new BrowserWindow({
             title: 'WhatsApp',
             backgroundColor: '#111b21',
             width: 1100,
@@ -35,12 +25,22 @@ export default class WhatsApp {
                 contextIsolation: false // native Notification override in preload :(
             }
         });
+        
+        this.window.setMenu(null);
 
-        window.setMenu(null);
-        window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT }); // TODO: Offline checker & "Computer not connected" page
-        window.webContents.reloadIgnoringCache(); // weird Chrome version bug
+        this.hotkeyManager = new HotkeyManager(this.window);
+    }
 
-        return window;
+    public init() {
+        this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT }); // TODO: Offline checker & "Computer not connected" page
+        this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
+
+        this.makeLinksOpenInBrowser();
+        this.registerListeners();
+        this.registerHotkeys();
+
+        this.hotkeyManager.init();
+        this.windowSettings.applySettings(this.window);
     }
 
     private makeLinksOpenInBrowser() {
@@ -53,11 +53,16 @@ export default class WhatsApp {
     }
 
     private registerListeners() {
-        this.window.on('close', _event => {
-            this.windowSettings.saveSettings(this.window);
+        this.app.on('second-instance', () => {
+            this.window.show();
+            this.window.focus();
         });
 
-        ipcMain.on('notification-click', _event => this.window.show());
+        ipcMain.on('notification-click', () => this.window.show());
+
+        this.window.on('close', event => {
+            this.windowSettings.saveSettings(this.window);
+        });
     }
 
     private registerHotkeys() {

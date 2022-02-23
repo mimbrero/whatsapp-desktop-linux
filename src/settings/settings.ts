@@ -1,11 +1,10 @@
 import Store from 'electron-store';
 
 export default abstract class Settings {
-    store: Store;
-    section: string;
+    private readonly store = new Store();
+    private readonly section: string;
 
     protected constructor(section: string) {
-        this.store = new Store();
         this.section = section + ".";
     }
 

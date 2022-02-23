@@ -1,5 +1,4 @@
-import { BrowserWindow, Input } from "electron";
-import WhatsApp from "./whatsapp";
+import { BrowserWindow } from "electron";
 
 interface ClickAction {
     control?: boolean,
@@ -11,8 +10,10 @@ export default class HotkeyManager {
 
     private readonly actions = new Array<ClickAction>();
 
-    public register(window: BrowserWindow) {
-        window.webContents.on('before-input-event', (event, input) => {
+    constructor(private readonly window: BrowserWindow) { }
+
+    public init() {
+        this.window.webContents.on('before-input-event', (event, input) => {
             this.actions.forEach(clickAction => {
                 if (input.control === clickAction.control && clickAction.keys.includes(input.key.toUpperCase())) {
                     clickAction.action();
@@ -22,7 +23,7 @@ export default class HotkeyManager {
         });
     }
 
-    public add(...clickAction: ClickAction[]) {
-        clickAction.forEach(action => this.actions.push(action));
+    public add(...clickActions: Array<ClickAction>) {
+        clickActions.forEach(action => this.actions.push(action));
     }
 };

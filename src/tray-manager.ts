@@ -41,7 +41,7 @@ export default class TrayManager {
             }
         ]);
 
-        this.tray.setContextMenu(menu); // update the tray's menu copy
+        this.tray.setContextMenu(menu);
     }
 
     private async updateIcon(url: string) {

@@ -13,7 +13,6 @@ export default class WhatsApp {
     private readonly windowSettings = new WindowSettings();
 
     private readonly window: BrowserWindow;
-
     private quitting = false;
 
     constructor(private readonly app: App) {
@@ -36,10 +35,7 @@ export default class WhatsApp {
         this.trayManager = new TrayManager(this.app, this.window);
     }
 
-    public init() {
-        this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT }); // TODO: Offline checker & "Computer not connected" page
-        this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
-
+    public async init() {
         this.makeLinksOpenInBrowser();
         this.registerListeners();
         this.registerHotkeys();
@@ -47,6 +43,13 @@ export default class WhatsApp {
         this.hotkeyManager.init();
         this.trayManager.init();
         this.windowSettings.applySettings(this.window);
+
+        this.quitting = true; // if Internet connection isn't available, closing the window should quit the app
+
+        await this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
+        this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
+
+        this.quitting = false;
     }
 
     private makeLinksOpenInBrowser() {

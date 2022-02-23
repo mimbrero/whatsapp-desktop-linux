@@ -1,6 +1,7 @@
 import { App, BrowserWindow, ipcMain, shell } from 'electron';
 import path from 'path';
 import HotkeyManager from './hotkey-manager';
+import TrayManager from './tray-manager';
 import WindowSettings from './settings/window-settings';
 
 const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36';
@@ -8,9 +9,11 @@ const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, l
 export default class WhatsApp {
 
     private readonly hotkeyManager: HotkeyManager;
+    private readonly trayManager: TrayManager;
     private readonly windowSettings = new WindowSettings();
 
     private readonly window: BrowserWindow;
+    private quitting = false;
 
     constructor(private readonly app: App) {
         this.window = new BrowserWindow({
@@ -29,18 +32,26 @@ export default class WhatsApp {
         this.window.setMenu(null);
 
         this.hotkeyManager = new HotkeyManager(this.window);
+        this.trayManager = new TrayManager(this.app, this.window);
     }
 
     public init() {
-        this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT }); // TODO: Offline checker & "Computer not connected" page
-        this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
-
         this.makeLinksOpenInBrowser();
         this.registerListeners();
         this.registerHotkeys();
 
         this.hotkeyManager.init();
+        this.trayManager.init();
         this.windowSettings.applySettings(this.window);
+
+        this.quitting = true; // if Internet connection isn't available, closing the window should quit the app
+
+        this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
+        this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
+
+        this.window.webContents.on('did-finish-load', () => {
+            this.quitting = false;
+        });
     }
 
     private makeLinksOpenInBrowser() {
@@ -60,8 +71,15 @@ export default class WhatsApp {
 
         ipcMain.on('notification-click', () => this.window.show());
 
+        this.app.on('before-quit', () => this.quitting = true);
+
         this.window.on('close', event => {
-            this.windowSettings.saveSettings(this.window);
+            if (this.quitting) {
+                this.windowSettings.saveSettings(this.window);
+            } else {
+                event.preventDefault();
+                this.window.hide()
+            }
         });
     }
 
@@ -99,8 +117,13 @@ export default class WhatsApp {
             },
             {
                 control: true,
-                keys: ["Q", "W"],
+                keys: ["W"],
                 action: () => this.window.close()
+            },
+            {
+                control: true,
+                keys: ["Q"],
+                action: () => this.app.quit()
             }
         );
     }

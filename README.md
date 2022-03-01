@@ -12,11 +12,11 @@ The official Flatpak build is updated instantly after every update.
 
 <a href="https://flathub.org/apps/details/io.github.mimbrero.WhatsAppDesktop"><img src="https://flathub.org/assets/badges/flathub-badge-en.png" width="250"></a>
 
-### 🖱️⌨️ AppImage
+### 🖱️ AppImage
 The AppImage build is attached to every release. Check the [releases page](https://github.com/mimbrero/whatsapp-desktop-linux/releases).
-Download the .appimage file, mark it as executable and double click it.
+Download the .AppImage file, mark it as executable and double click it. [Check this video tutorial](https://www.youtube.com/watch?v=nzZ6Ikc7juw).
 
-### 📟⌨️ From source
+### ⌨️ From source
 1. Clone the repo
 ```bash
 git clone https://github.com/mimbrero/whatsapp-desktop-linux.git

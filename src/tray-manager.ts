@@ -1,4 +1,4 @@
-import { App, BrowserWindow, Menu, NativeImage, nativeImage, Tray } from "electron";
+import { App, BrowserWindow, Menu, MenuItem, NativeImage, nativeImage, Tray } from "electron";
 import path from "path";
 import fs from "fs";
 
@@ -51,6 +51,15 @@ export default class TrayManager {
                 click: () => this.app.quit()
             }
         ]);
+
+        if (this.unread != 0) {
+            menu.insert(0, new MenuItem({
+                label: this.unread + " unread chats",
+                enabled: false
+            }));
+
+            menu.insert(1, new MenuItem({ type: "separator" }));
+        }
 
         this.tray.setContextMenu(menu);
     }

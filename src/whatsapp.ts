@@ -23,6 +23,7 @@ export default class WhatsApp {
             height: 700,
             minWidth: 650,
             minHeight: 550,
+            show: !process.argv.includes("--start-hidden"),
             webPreferences: {
                 preload: path.join(__dirname, 'preload.js'),
                 contextIsolation: false // native Notification override in preload :(

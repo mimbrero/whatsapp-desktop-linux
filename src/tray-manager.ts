@@ -1,5 +1,6 @@
 import { App, BrowserWindow, Menu, NativeImage, nativeImage, Tray } from "electron";
 import path from "path";
+import fs from "fs";
 
 export default class TrayManager {
 
@@ -64,7 +65,10 @@ export default class TrayManager {
     }
 
     private findIcon(name: string) {
-        const iconPath = path.join(this.app.getAppPath(), "data/icons/hicolor/512x512/apps/", name);
+        let iconPath = path.join("${XDG_DATA_DIRS}", "icons/hicolor/512x512/apps/", name);
+        if (!fs.existsSync(iconPath))
+            iconPath = path.join(this.app.getAppPath(), "data/icons/hicolor/512x512/apps/", name);
+
         return nativeImage.createFromPath(iconPath);
     }
 };

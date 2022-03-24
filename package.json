@@ -13,7 +13,6 @@
   "author": "Alberto Mimbrero",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.26.0",
     "electron-store": "^8.0.1"
   },
   "devDependencies": {

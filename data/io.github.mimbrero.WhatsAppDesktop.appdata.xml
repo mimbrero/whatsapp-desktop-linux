@@ -16,10 +16,21 @@
   <url type="homepage">https://github.com/mimbrero/whatsapp-desktop-linux</url>
 
   <releases>
+    <release version="1.2.1" date="2022-03-24">
+      <description>
+        <ul>
+          <li>New unread chats item in the tray menu</li>
+          <li>The window close button now quits the app (click the "minimize to tray" tray menu item to hide the window)</li>
+          <li>New tray icon with higher resolution</li>
+          <li>Use the "--start-hidden" argument to start WhatsApp in tray</li>
+          <li>New app description for the desktop environments that display them</li>
+          <li>Tray menu improvements for the Flatpak build</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.0" date="2022-02-23">
       <description>
         <ul>
-          <li>New tray icon</li>
           <li>WhatsApp can now minimize to tray</li>
           <li>Scaling the window is now possible with Ctrl+"+", Ctrl+0 and Ctrl+"-"</li>
         </ul>
@@ -35,11 +46,7 @@
       </description>
     </release>
     <release version="1.0.1" date="2022-01-28" />
-    <release version="1.0" date="2022-01-17">
-      <description>
-        <p>First release!</p>
-      </description>
-    </release>
+    <release version="1.0" date="2022-01-17" />
   </releases>
 
   <requires>

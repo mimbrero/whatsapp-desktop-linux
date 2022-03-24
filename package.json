@@ -27,15 +27,11 @@
       "output": "./build"
     },
     "files": [
-      "dist/**/*",
+      "dist",
       "package.json"
     ],
     "extraFiles": [
-      {
-        "from": "data",
-        "to": "data",
-        "filter": "**/*"
-      }
+      "data"
     ]
   }
 }

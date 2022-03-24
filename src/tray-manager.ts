@@ -74,10 +74,19 @@ export default class TrayManager {
     }
 
     private findIcon(name: string) {
-        let iconPath = path.join("${XDG_DATA_DIRS}", "icons/hicolor/512x512/apps/", name);
+        let iconPath = path.join(this.getDataDir("icons/hicolor/512x512/apps/"), name);
+
         if (!fs.existsSync(iconPath))
             iconPath = path.join(this.app.getAppPath(), "data/icons/hicolor/512x512/apps/", name);
 
         return nativeImage.createFromPath(iconPath);
+    }
+
+    private getDataDir(iconPath: string) {
+        for (let dataDir of process.env.XDG_DATA_DIRS.split(":")) {
+            let fullPath = path.join(dataDir, iconPath);
+            if (fs.existsSync(fullPath))
+                return fullPath;
+        }
     }
 };

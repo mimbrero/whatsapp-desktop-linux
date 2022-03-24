@@ -13,7 +13,6 @@ export default class WhatsApp {
     private readonly windowSettings = new WindowSettings();
 
     private readonly window: BrowserWindow;
-    private quitting = false;
 
     constructor(private readonly app: App) {
         this.window = new BrowserWindow({
@@ -29,7 +28,7 @@ export default class WhatsApp {
                 contextIsolation: false // native Notification override in preload :(
             }
         });
-        
+
         this.window.setMenu(null);
 
         this.hotkeyManager = new HotkeyManager(this.window);
@@ -45,14 +44,12 @@ export default class WhatsApp {
         this.trayManager.init();
         this.windowSettings.applySettings(this.window);
 
-        this.quitting = true; // if Internet connection isn't available, closing the window should quit the app
-
         this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
-        this.window.webContents.reloadIgnoringCache(); // weird Chrome version bug
+        this.reload(); // weird Chrome version bug
+    }
 
-        this.window.webContents.on('did-finish-load', () => {
-            this.quitting = false;
-        });
+    private reload() {
+        this.window.webContents.reloadIgnoringCache();
     }
 
     private makeLinksOpenInBrowser() {
@@ -72,16 +69,7 @@ export default class WhatsApp {
 
         ipcMain.on('notification-click', () => this.window.show());
 
-        this.app.on('before-quit', () => this.quitting = true);
-
-        this.window.on('close', event => {
-            if (this.quitting) {
-                this.windowSettings.saveSettings(this.window);
-            } else {
-                event.preventDefault();
-                this.window.hide()
-            }
-        });
+        this.window.on('close', () => this.windowSettings.saveSettings(this.window));
     }
 
     private registerHotkeys() {
@@ -109,17 +97,17 @@ export default class WhatsApp {
             },
             {
                 keys: ["F5"],
-                action: () => this.window.webContents.reloadIgnoringCache()
+                action: () => this.reload()
             },
             {
                 control: true,
                 keys: ["R"],
-                action: () => this.window.webContents.reloadIgnoringCache()
+                action: () => this.reload()
             },
             {
                 control: true,
                 keys: ["W"],
-                action: () => this.window.close()
+                action: () => this.window.hide()
             },
             {
                 control: true,

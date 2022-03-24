@@ -1,22 +1,40 @@
-import axios from "axios";
-import { App, BrowserWindow, Menu, NativeImage, nativeImage, Tray } from "electron";
+import { App, BrowserWindow, Menu, MenuItem, NativeImage, nativeImage, Tray } from "electron";
+import path from "path";
+import fs from "fs";
 
 export default class TrayManager {
 
-    private tray: Tray = null;
+    private readonly ICON: NativeImage;
+    private readonly ICON_UNREAD: NativeImage;
 
-    constructor(private readonly app: App, private readonly window: BrowserWindow) { }
+    private readonly tray: Tray;
+    private unread = 0;
 
-    public init() {
-        this.window.webContents.on("page-favicon-updated", (_event, urls) => this.updateIcon(urls[urls.length - 1]));
-        this.window.on('focus', () => this.updateMenu());
-        this.window.on('blur', () => this.updateMenu());
-        this.window.on('close', () => this.updateMenu());
+    constructor(private readonly app: App, private readonly window: BrowserWindow) {
+        this.ICON = this.findIcon("io.github.mimbrero.WhatsAppDesktop.png");
+        this.ICON_UNREAD = this.findIcon("io.github.mimbrero.WhatsAppDesktop-unread.png");
+
+        this.tray = new Tray(this.ICON);
+        this.updateMenu();
     }
 
-    private createTray(image: NativeImage) {
-        this.tray = new Tray(image);
-        this.updateMenu();
+    public init() {
+        this.window.on('focus', () => this.updateMenu());
+        this.window.on('blur', () => this.updateMenu());
+        this.window.on('hide', () => this.updateMenu());
+
+        this.window.webContents.on("page-title-updated", (_event, title, explicitSet) => {
+            if (!explicitSet) return;
+
+            this.unread = this.getUnread(title);
+            this.updateMenu();
+            this.tray.setImage(this.unread == 0 ? this.ICON : this.ICON_UNREAD);
+        });
+    }
+
+    private getUnread(title: string) {
+        const matches = title.match(/\(\d+\) WhatsApp/);
+        return matches == null ? 0 : Number.parseInt(matches[0].match(/\d+/)[0]);
     }
 
     private updateMenu() {
@@ -26,15 +44,7 @@ export default class TrayManager {
         const menu = Menu.buildFromTemplate([
             {
                 label: this.window.isFocused() ? "Minimize to tray" : "Show WhatsApp",
-                click: () => {
-                    if (this.window.isFocused()) {
-                        this.window.hide();
-                    } else {
-                        this.window.show();
-                        this.window.focus();
-                    }
-                    this.updateMenu();
-                }
+                click: () => this.onClickFirstItem()
             },
             {
                 label: "Quit WhatsApp",
@@ -42,13 +52,32 @@ export default class TrayManager {
             }
         ]);
 
+        if (this.unread != 0) {
+            menu.insert(0, new MenuItem({
+                label: this.unread + " unread chats",
+                enabled: false
+            }));
+
+            menu.insert(1, new MenuItem({ type: "separator" }));
+        }
+
         this.tray.setContextMenu(menu);
     }
 
-    private async updateIcon(url: string) {
-        const response = await axios.get(url, { responseType: "arraybuffer" });
-        const image = nativeImage.createFromBuffer(Buffer.from(response.data));
+    private onClickFirstItem() {
+        if (this.window.isFocused()) {
+            this.window.hide();
+        } else {
+            this.window.show();
+            this.window.focus();
+        }
+    }
 
-        this.tray == null ? this.createTray(image) : this.tray.setImage(image);
+    private findIcon(name: string) {
+        let iconPath = path.join("${XDG_DATA_DIRS}", "icons/hicolor/512x512/apps/", name);
+        if (!fs.existsSync(iconPath))
+            iconPath = path.join(this.app.getAppPath(), "data/icons/hicolor/512x512/apps/", name);
+
+        return nativeImage.createFromPath(iconPath);
     }
 };

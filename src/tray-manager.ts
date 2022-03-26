@@ -62,6 +62,7 @@ export default class TrayManager {
         }
 
         this.tray.setContextMenu(menu);
+        this.tray.setToolTip('WhatsApp Desktop - ' + this.unread + ' unread messages');
     }
 
     private onClickFirstItem() {

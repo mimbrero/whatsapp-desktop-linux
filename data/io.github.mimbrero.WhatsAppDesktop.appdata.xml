@@ -16,6 +16,13 @@
   <url type="homepage">https://github.com/mimbrero/whatsapp-desktop-linux</url>
 
   <releases>
+    <release version="1.2.2" date="2022-03-29">
+      <description>
+        <ul>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.2.1" date="2022-03-24">
       <description>
         <ul>
@@ -36,7 +43,13 @@
         </ul>
       </description>
     </release>
-    <release version="1.1.1" date="2022-02-09" />
+    <release version="1.1.1" date="2022-02-09">
+      <description>
+        <ul>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2022-02-03">
       <description>
         <ul>
@@ -45,7 +58,13 @@
         </ul>
       </description>
     </release>
-    <release version="1.0.1" date="2022-01-28" />
+    <release version="1.0.1" date="2022-01-28">
+      <description>
+        <ul>
+          <li>Bug fixes</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0" date="2022-01-17" />
   </releases>
 

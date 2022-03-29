@@ -50,7 +50,7 @@ export default class TrayManager {
         ]);
 
         let tooltip = "WhatsApp Desktop";
-        
+
         if (this.unread != 0) {
             menu.insert(0, new MenuItem({
                 label: this.unread + " unread chats",
@@ -76,19 +76,20 @@ export default class TrayManager {
     }
 
     private findIcon(name: string) {
-        let iconPath = path.join(this.getDataDir("icons/hicolor/512x512/apps/"), name);
+        let iconPath = this.fromDataDirs("icons/hicolor/512x512/apps/" + name);
 
-        if (!fs.existsSync(iconPath))
+        if (iconPath === null)
             iconPath = path.join(this.app.getAppPath(), "data/icons/hicolor/512x512/apps/", name);
 
         return nativeImage.createFromPath(iconPath);
     }
 
-    private getDataDir(iconPath: string) {
+    private fromDataDirs(iconPath: string) {
         for (let dataDir of process.env.XDG_DATA_DIRS.split(":")) {
             let fullPath = path.join(dataDir, iconPath);
             if (fs.existsSync(fullPath))
                 return fullPath;
         }
+        return null;
     }
 };

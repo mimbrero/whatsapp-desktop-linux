@@ -21,7 +21,6 @@ export default class TrayManager {
     public init() {
         this.window.on('focus', () => this.updateMenu());
         this.window.on('blur', () => this.updateMenu());
-        this.window.on('hide', () => this.updateMenu());
 
         this.window.webContents.on("page-title-updated", (_event, title, explicitSet) => {
             if (!explicitSet) return;
@@ -73,6 +72,8 @@ export default class TrayManager {
             this.window.show();
             this.window.focus();
         }
+
+        this.updateMenu();
     }
 
     private findIcon(name: string) {

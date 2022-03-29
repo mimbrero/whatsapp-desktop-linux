@@ -38,9 +38,6 @@ export default class TrayManager {
     }
 
     private updateMenu() {
-        if (this.tray == null)
-            return;
-
         const menu = Menu.buildFromTemplate([
             {
                 label: this.window.isFocused() ? "Minimize to tray" : "Show WhatsApp",

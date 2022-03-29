@@ -52,6 +52,8 @@ export default class TrayManager {
             }
         ]);
 
+        let tooltip = "WhatsApp Desktop";
+        
         if (this.unread != 0) {
             menu.insert(0, new MenuItem({
                 label: this.unread + " unread chats",
@@ -59,10 +61,12 @@ export default class TrayManager {
             }));
 
             menu.insert(1, new MenuItem({ type: "separator" }));
+        } else {
+            tooltip = tooltip + " - " + this.unread + " unread chats";
         }
 
         this.tray.setContextMenu(menu);
-        this.tray.setToolTip("WhatsApp Desktop - " + this.unread + " unread chats");
+        this.tray.setToolTip(tooltip);
     }
 
     private onClickFirstItem() {

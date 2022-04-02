@@ -57,7 +57,7 @@ export default class TrayManager {
             }));
 
             menu.insert(1, new MenuItem({ type: "separator" }));
-        } else {
+
             tooltip = tooltip + " - " + this.unread + " unread chats";
         }
 

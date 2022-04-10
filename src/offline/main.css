@@ -1,0 +1,62 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Style file */
+
+:root {
+    --dark-bg-color: #20272b;
+    --dark-card-color: #3b4042;
+    --dark-mode-text-color: #d4d5d7;
+    --light-bg-color: #ededed;
+    --light-card-color: white;
+    --light-mode-text-color: #4a4a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: var(--dark-bg-color);
+        color: var(--dark-mode-text-color);
+    }
+    .box {
+        background: var(--dark-card-color);
+        box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.4);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background: var(--light-bg-color);
+        color: var(--light-mode-text-color);
+    }
+    .box {
+        background: var(--light-card-color);
+        box-shadow: 0px 15px 15px grey;
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25em;
+    margin-top: 0;
+    padding: 2em;
+    border-radius: 5px;
+}

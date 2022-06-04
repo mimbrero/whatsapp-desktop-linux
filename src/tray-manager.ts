@@ -39,7 +39,7 @@ export default class TrayManager {
     private updateMenu() {
         const menu = Menu.buildFromTemplate([
             {
-                label: this.window.isFocused() ? "Minimize to tray" : "Show WhatsApp",
+                label: this.window.isVisible() ? "Minimize to tray" : "Show WhatsApp",
                 click: () => this.onClickFirstItem()
             },
             {
@@ -66,11 +66,10 @@ export default class TrayManager {
     }
 
     private onClickFirstItem() {
-        if (this.window.isFocused()) {
+        if (this.window.isVisible()) {
             this.window.hide();
         } else {
             this.window.show();
-            this.window.focus();
         }
 
         this.updateMenu();

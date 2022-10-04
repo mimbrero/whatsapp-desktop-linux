@@ -17,7 +17,6 @@ export default class WhatsApp {
     constructor(private readonly app: App) {
         this.window = new BrowserWindow({
             title: 'WhatsApp',
-            backgroundColor: '#111b21',
             width: 1100,
             height: 700,
             minWidth: 650,
@@ -68,6 +67,7 @@ export default class WhatsApp {
         });
 
         ipcMain.on('notification-click', () => this.window.show());
+        ipcMain.on("chrome-version-bug", () => this.reload());
 
         this.window.on('close', () => this.windowSettings.saveSettings(this.window));
     }

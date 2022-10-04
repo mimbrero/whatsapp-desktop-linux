@@ -13,7 +13,7 @@
   "author": "Alberto Mimbrero",
   "license": "MIT",
   "dependencies": {
-    "electron-store": "^8.0.1"
+    "electron-store": "^8.1.0"
   },
   "devDependencies": {
     "electron": "^21.0.1",

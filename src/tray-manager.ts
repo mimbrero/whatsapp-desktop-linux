@@ -1,6 +1,7 @@
 import { App, BrowserWindow, Menu, MenuItem, NativeImage, nativeImage, Tray } from "electron";
 import path from "path";
 import fs from "fs";
+import WhatsApp from "./whatsapp";
 
 export default class TrayManager {
 
@@ -10,7 +11,7 @@ export default class TrayManager {
     private readonly tray: Tray;
     private unread = 0;
 
-    constructor(private readonly app: App, private readonly window: BrowserWindow) {
+    constructor(private readonly whatsApp: WhatsApp, private readonly app: App, private readonly window: BrowserWindow) {
         this.ICON = this.findIcon("io.github.mimbrero.WhatsAppDesktop.png");
         this.ICON_UNREAD = this.findIcon("io.github.mimbrero.WhatsAppDesktop-unread.png");
 
@@ -21,6 +22,13 @@ export default class TrayManager {
     public init() {
         this.window.on('focus', () => this.updateMenu());
         this.window.on('blur', () => this.updateMenu());
+
+        this.window.on("close", event => {
+            if (this.whatsApp.quitting) return;
+
+            event.preventDefault();
+            this.window.hide();
+        });
 
         this.window.webContents.on("page-title-updated", (_event, title, explicitSet) => {
             if (!explicitSet) return;
@@ -44,7 +52,7 @@ export default class TrayManager {
             },
             {
                 label: "Quit WhatsApp",
-                click: () => this.app.quit()
+                click: () => this.whatsApp.quit()
             }
         ]);
 

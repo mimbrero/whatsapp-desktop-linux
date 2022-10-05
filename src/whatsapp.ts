@@ -13,6 +13,7 @@ export default class WhatsApp {
     private readonly windowSettings = new WindowSettings();
 
     private readonly window: BrowserWindow;
+    public quitting = false;
 
     constructor(private readonly app: App) {
         this.window = new BrowserWindow({
@@ -31,7 +32,7 @@ export default class WhatsApp {
         this.window.setMenu(null);
 
         this.hotkeyManager = new HotkeyManager(this.window);
-        this.trayManager = new TrayManager(this.app, this.window);
+        this.trayManager = new TrayManager(this, this.app, this.window);
     }
 
     public init() {
@@ -47,10 +48,15 @@ export default class WhatsApp {
         this.reload(); // weird Chrome version bug
     }
 
-    private reload() {
+    public reload() {
         this.window.webContents.reloadIgnoringCache();
     }
 
+    public quit() {
+        this.quitting = true;
+        this.app.quit();
+    }
+    
     private makeLinksOpenInBrowser() {
         this.window.webContents.setWindowOpenHandler(details => {
             if (details.url != this.window.webContents.getURL()) {
@@ -73,7 +79,10 @@ export default class WhatsApp {
             this.reload();
         });
 
-        this.window.on('close', () => this.windowSettings.saveSettings(this.window));
+        this.window.on("close", () => {
+            if (!this.quitting) return;
+            this.windowSettings.saveSettings(this.window);
+        });
     }
 
     private registerHotkeys() {
@@ -116,7 +125,7 @@ export default class WhatsApp {
             {
                 control: true,
                 keys: ["Q"],
-                action: () => this.app.quit()
+                action: () => this.quit()
             }
         );
     }

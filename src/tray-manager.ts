@@ -20,8 +20,10 @@ export default class TrayManager {
     }
 
     public init() {
-        this.window.on('focus', () => this.updateMenu());
-        this.window.on('blur', () => this.updateMenu());
+        this.window.on("show", () => this.updateMenu());
+        this.window.on("focus", () => this.updateMenu());
+        this.window.on("blur", () => this.updateMenu());
+        this.window.on("hide", () => this.updateMenu());
 
         this.window.on("close", event => {
             if (this.whatsApp.quitting) return;

@@ -1,52 +1,27 @@
-import { App, BrowserWindow, Menu, MenuItem, NativeImage, nativeImage, Tray } from "electron";
-import path from "path";
-import fs from "fs";
+import { BrowserWindow, Menu, MenuItem, Tray } from "electron";
 import WhatsApp from "./whatsapp";
+import { findIcon, getUnreadMessages } from "./util";
+
+const ICON = findIcon("io.github.mimbrero.WhatsAppDesktop.png");
+const ICON_UNREAD = findIcon("io.github.mimbrero.WhatsAppDesktop-unread.png");
 
 export default class TrayManager {
 
-    private readonly ICON: NativeImage;
-    private readonly ICON_UNREAD: NativeImage;
-
     private readonly tray: Tray;
-    private unread = 0;
 
-    constructor(private readonly whatsApp: WhatsApp, private readonly app: App, private readonly window: BrowserWindow) {
-        this.ICON = this.findIcon("io.github.mimbrero.WhatsAppDesktop.png");
-        this.ICON_UNREAD = this.findIcon("io.github.mimbrero.WhatsAppDesktop-unread.png");
-
-        this.tray = new Tray(this.ICON);
-        this.updateMenu();
+    constructor(
+        private readonly whatsApp: WhatsApp,
+        private readonly window: BrowserWindow
+    ) {
+        this.tray = new Tray(ICON);
     }
 
     public init() {
-        this.window.on("show", () => this.updateMenu());
-        this.window.on("focus", () => this.updateMenu());
-        this.window.on("blur", () => this.updateMenu());
-        this.window.on("hide", () => this.updateMenu());
-
-        this.window.on("close", event => {
-            if (this.whatsApp.quitting) return;
-
-            event.preventDefault();
-            this.window.hide();
-        });
-
-        this.window.webContents.on("page-title-updated", (_event, title, explicitSet) => {
-            if (!explicitSet) return;
-
-            this.unread = this.getUnread(title);
-            this.updateMenu();
-            this.tray.setImage(this.unread == 0 ? this.ICON : this.ICON_UNREAD);
-        });
+        this.updateMenu();
+        this.registerListeners();
     }
 
-    private getUnread(title: string) {
-        const matches = title.match(/\(\d+\) WhatsApp/);
-        return matches == null ? 0 : Number.parseInt(matches[0].match(/\d+/)[0]);
-    }
-
-    private updateMenu() {
+    private updateMenu(unread: number = getUnreadMessages(this.window.title)) {
         const menu = Menu.buildFromTemplate([
             {
                 label: this.window.isFocused() ? "Minimize to tray" : "Show WhatsApp",
@@ -60,15 +35,15 @@ export default class TrayManager {
 
         let tooltip = "WhatsApp Desktop";
 
-        if (this.unread != 0) {
+        if (unread != 0) {
             menu.insert(0, new MenuItem({
-                label: this.unread + " unread chats",
+                label: unread + " unread chats",
                 enabled: false
             }));
 
             menu.insert(1, new MenuItem({ type: "separator" }));
 
-            tooltip = tooltip + " - " + this.unread + " unread chats";
+            tooltip = tooltip + " - " + unread + " unread chats";
         }
 
         this.tray.setContextMenu(menu);
@@ -86,21 +61,26 @@ export default class TrayManager {
         this.updateMenu();
     }
 
-    private findIcon(name: string) {
-        let iconPath = this.fromDataDirs("icons/hicolor/512x512/apps/" + name);
+    private registerListeners() {
+        this.window.on("show", () => this.updateMenu());
+        this.window.on("focus", () => this.updateMenu());
+        this.window.on("blur", () => this.updateMenu());
+        this.window.on("hide", () => this.updateMenu());
 
-        if (iconPath === null)
-            iconPath = path.join(this.app.getAppPath(), "data/icons/hicolor/512x512/apps/", name);
+        this.window.on("close", event => {
+            if (this.whatsApp.quitting) return;
 
-        return nativeImage.createFromPath(iconPath);
-    }
+            event.preventDefault();
+            this.window.hide();
+        });
 
-    private fromDataDirs(iconPath: string) {
-        for (let dataDir of process.env.XDG_DATA_DIRS.split(":")) {
-            let fullPath = path.join(dataDir, iconPath);
-            if (fs.existsSync(fullPath))
-                return fullPath;
-        }
-        return null;
+        this.window.webContents.on("page-title-updated", (_event, title, explicitSet) => {
+            if (!explicitSet) return;
+
+            let unread = getUnreadMessages(title);
+
+            this.updateMenu(unread);
+            this.tray.setImage(unread == 0 ? ICON : ICON_UNREAD);
+        });
     }
 };

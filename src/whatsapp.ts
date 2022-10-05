@@ -1,23 +1,19 @@
-import { App, BrowserWindow, ipcMain, shell } from 'electron';
-import path from 'path';
-import HotkeyManager from './hotkey-manager';
-import TrayManager from './tray-manager';
-import WindowSettings from './settings/window-settings';
+import { app, BrowserWindow, ipcMain, shell } from "electron";
+import path from "path";
+import HotkeyManager from "./hotkey-manager";
+import TrayManager from "./tray-manager";
+import WindowSettings from "./settings/window-settings";
 
 const USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.9999.0 Safari/537.36";
 
 export default class WhatsApp {
 
-    private readonly hotkeyManager: HotkeyManager;
-    private readonly trayManager: TrayManager;
-    private readonly windowSettings = new WindowSettings();
-
     private readonly window: BrowserWindow;
     public quitting = false;
 
-    constructor(private readonly app: App) {
+    constructor() {
         this.window = new BrowserWindow({
-            title: 'WhatsApp',
+            title: "WhatsApp",
             width: 1100,
             height: 700,
             minWidth: 650,
@@ -28,24 +24,19 @@ export default class WhatsApp {
                 contextIsolation: false // native Notification override in preload :(
             }
         });
-
-        this.window.setMenu(null);
-
-        this.hotkeyManager = new HotkeyManager(this.window);
-        this.trayManager = new TrayManager(this, this.app, this.window);
     }
 
     public init() {
         this.makeLinksOpenInBrowser();
         this.registerListeners();
-        this.registerHotkeys();
 
-        this.hotkeyManager.init();
-        this.trayManager.init();
-        this.windowSettings.applySettings(this.window);
-
+        this.window.setMenu(null);
         this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
         this.reload(); // weird Chrome version bug
+
+        new HotkeyManager(this, this.window).init();
+        new TrayManager(this, this.window).init();
+        new WindowSettings(this, this.window).init();
     }
 
     public reload() {
@@ -54,7 +45,7 @@ export default class WhatsApp {
 
     public quit() {
         this.quitting = true;
-        this.app.quit();
+        app.quit();
     }
     
     private makeLinksOpenInBrowser() {
@@ -67,7 +58,7 @@ export default class WhatsApp {
     }
 
     private registerListeners() {
-        this.app.on('second-instance', () => {
+        app.on('second-instance', () => {
             this.window.show();
             this.window.focus();
         });
@@ -78,55 +69,5 @@ export default class WhatsApp {
             console.log("Detected chrome version bug. Reloading...");
             this.reload();
         });
-
-        this.window.on("close", () => {
-            if (!this.quitting) return;
-            this.windowSettings.saveSettings(this.window);
-        });
-    }
-
-    private registerHotkeys() {
-        this.hotkeyManager.add(
-            {
-                control: true,
-                keys: ["+"],
-                action: () => {
-                    if (this.window.webContents.getZoomFactor() < 3)
-                        this.window.webContents.zoomLevel += 1
-                }
-            },
-            {
-                control: true,
-                keys: ["0"],
-                action: () => this.window.webContents.setZoomLevel(0)
-            },
-            {
-                control: true,
-                keys: ["-"],
-                action: () => {
-                    if (this.window.webContents.getZoomFactor() > 0.5)
-                        this.window.webContents.zoomLevel -= 1
-                }
-            },
-            {
-                keys: ["F5"],
-                action: () => this.reload()
-            },
-            {
-                control: true,
-                keys: ["R"],
-                action: () => this.reload()
-            },
-            {
-                control: true,
-                keys: ["W"],
-                action: () => this.window.hide()
-            },
-            {
-                control: true,
-                keys: ["Q"],
-                action: () => this.quit()
-            }
-        );
     }
 };

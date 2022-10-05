@@ -1,41 +1,39 @@
 import { BrowserWindow } from 'electron';
+import WhatsApp from '../whatsapp';
 import Settings from './settings';
 
 export default class WindowSettings extends Settings {
-    constructor() {
+    
+    constructor(
+        private readonly whatsApp: WhatsApp,
+        private readonly window: BrowserWindow
+    ) {
         super("window");
     }
 
-    public applySettings(window: BrowserWindow) {
-        let defaults = window.getBounds(); // The window is constructed with the defaults.
-        window.setBounds(this.getBounds(defaults));
+    public init() {
+        this.applySettings();
 
-        if (this.isMaximized()) {
-            window.maximize();
+        this.window.on("close", () => {
+            if (!this.whatsApp.quitting) return;
+            this.saveSettings();
+        });
+    }
+
+    private applySettings() {
+        let defaults = this.window.getBounds(); // The window is constructed with the defaults.
+        this.window.setBounds(this.get("bounds", defaults));
+
+        if (this.get("maximized", false)) {
+            this.window.maximize();
         }
     }
 
-    public saveSettings(window: BrowserWindow) {
-        this.setMaximized(window.isMaximized());
+    private saveSettings() {
+        this.set("maximized", this.window.isMaximized());
 
-        if (!window.isMaximized()) {
-            this.setBounds(window.getBounds());
+        if (!this.window.isMaximized()) {
+            this.set("bounds", this.window.getBounds());
         }
-    }
-
-    public getBounds(defaults: Electron.Rectangle): Electron.Rectangle {
-        return this.get("bounds", defaults);
-    }
-
-    public setBounds(bounds: Electron.Rectangle) {
-        this.set("bounds", bounds);
-    }
-
-    public isMaximized(): boolean {
-        return this.get("maximized", false);
-    }
-
-    public setMaximized(maximized: boolean) {
-        this.set("maximized", maximized);
     }
 };

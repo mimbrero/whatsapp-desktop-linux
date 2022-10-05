@@ -6,4 +6,4 @@ if (!app.requestSingleInstanceLock()) {
     process.exit();
 }
 
-app.whenReady().then(() => new WhatsApp(app).init());
+app.whenReady().then(() => new WhatsApp().init());

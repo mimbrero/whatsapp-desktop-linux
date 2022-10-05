@@ -67,7 +67,11 @@ export default class WhatsApp {
         });
 
         ipcMain.on('notification-click', () => this.window.show());
-        ipcMain.on("chrome-version-bug", () => this.reload());
+        
+        ipcMain.on("chrome-version-bug", () => {
+            console.log("Detected chrome version bug. Reloading...");
+            this.reload();
+        });
 
         this.window.on('close', () => this.windowSettings.saveSettings(this.window));
     }

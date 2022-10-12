@@ -1,5 +1,6 @@
 import { BrowserWindow, Event, Input } from "electron";
-import WhatsApp from "./whatsapp";
+import WhatsApp from "../whatsapp";
+import Module from "./module";
 
 interface ClickAction {
     control?: boolean,
@@ -7,16 +8,18 @@ interface ClickAction {
     action: () => void
 }
 
-export default class HotkeyManager {
+export default class HotkeyModule extends Module {
 
     private readonly actions = new Array<ClickAction>();
 
     constructor(
         private readonly whatsApp: WhatsApp,
         private readonly window: BrowserWindow
-    ) { }
+    ) {
+        super();
+    }
 
-    public init() {
+    public override beforeLoad() {
         this.registerHotkeys();
         this.registerListeners();
     }

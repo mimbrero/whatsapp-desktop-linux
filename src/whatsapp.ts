@@ -1,14 +1,17 @@
 import { app, BrowserWindow, ipcMain, shell } from "electron";
 import path from "path";
-import HotkeyManager from "./hotkey-manager";
-import TrayManager from "./tray-manager";
-import WindowSettings from "./settings/window-settings";
+import ChromeVersionFix from "./fix/chrome-version-fix";
+import HotkeyModule from "./module/hotkey-module";
+import ModuleManager from "./module/module-manager";
+import TrayModule from "./module/tray-module";
+import WindowSettingsModule from "./module/window-settings-module";
 
 const USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.9999.0 Safari/537.36";
 
 export default class WhatsApp {
 
     private readonly window: BrowserWindow;
+    private readonly moduleManager: ModuleManager;
     public quitting = false;
 
     constructor() {
@@ -24,19 +27,25 @@ export default class WhatsApp {
                 contextIsolation: false // native Notification override in preload :(
             }
         });
+
+        this.moduleManager = new ModuleManager([
+            new HotkeyModule(this, this.window),
+            new TrayModule(this, this.window),
+            new WindowSettingsModule(this, this.window),
+            new ChromeVersionFix(this)
+        ]);
     }
 
     public init() {
         this.makeLinksOpenInBrowser();
         this.registerListeners();
 
+        this.moduleManager.beforeLoad();
+
         this.window.setMenu(null);
         this.window.loadURL('https://web.whatsapp.com/', { userAgent: USER_AGENT });
-        this.reload(); // weird Chrome version bug
 
-        new HotkeyManager(this, this.window).init();
-        new TrayManager(this, this.window).init();
-        new WindowSettings(this, this.window).init();
+        this.moduleManager.onLoad();
     }
 
     public reload() {
@@ -45,6 +54,7 @@ export default class WhatsApp {
 
     public quit() {
         this.quitting = true;
+        this.moduleManager.onQuit();
         app.quit();
     }
     
@@ -64,10 +74,5 @@ export default class WhatsApp {
         });
 
         ipcMain.on('notification-click', () => this.window.show());
-        
-        ipcMain.on("chrome-version-bug", () => {
-            console.log("Detected chrome version bug. Reloading...");
-            this.reload();
-        });
     }
 };

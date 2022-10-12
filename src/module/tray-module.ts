@@ -1,11 +1,12 @@
 import { BrowserWindow, Menu, MenuItem, Tray } from "electron";
-import WhatsApp from "./whatsapp";
-import { findIcon, getUnreadMessages } from "./util";
+import { findIcon, getUnreadMessages } from "../util";
+import WhatsApp from "../whatsapp";
+import Module from "./module";
 
 const ICON = findIcon("io.github.mimbrero.WhatsAppDesktop.png");
 const ICON_UNREAD = findIcon("io.github.mimbrero.WhatsAppDesktop-unread.png");
 
-export default class TrayManager {
+export default class TrayModule extends Module {
 
     private readonly tray: Tray;
 
@@ -13,10 +14,11 @@ export default class TrayManager {
         private readonly whatsApp: WhatsApp,
         private readonly window: BrowserWindow
     ) {
+        super();
         this.tray = new Tray(ICON);
     }
 
-    public init() {
+    public override onLoad() {
         this.updateMenu();
         this.registerListeners();
     }

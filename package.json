@@ -1,6 +1,6 @@
 {
   "name": "whatsapp-desktop-linux",
-  "version": "1.2.3-1",
+  "version": "1.2.3-2",
   "description": "WhatsApp Desktop for Linux (unofficial)",
   "main": "dist/index.js",
   "scripts": {

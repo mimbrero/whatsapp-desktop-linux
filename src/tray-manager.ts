@@ -24,7 +24,7 @@ export default class TrayManager {
     private updateMenu(unread: number = getUnreadMessages(this.window.title)) {
         const menu = Menu.buildFromTemplate([
             {
-                label: this.window.isFocused() ? "Minimize to tray" : "Show WhatsApp",
+                label: this.window.isVisible() ? "Minimize to tray" : "Show WhatsApp",
                 click: () => this.onClickFirstItem()
             },
             {
@@ -51,7 +51,7 @@ export default class TrayManager {
     }
 
     private onClickFirstItem() {
-        if (this.window.isFocused()) {
+        if (this.window.isVisible()) {
             this.window.hide();
         } else {
             this.window.show();
@@ -63,8 +63,6 @@ export default class TrayManager {
 
     private registerListeners() {
         this.window.on("show", () => this.updateMenu());
-        this.window.on("focus", () => this.updateMenu());
-        this.window.on("blur", () => this.updateMenu());
         this.window.on("hide", () => this.updateMenu());
 
         this.window.on("close", event => {

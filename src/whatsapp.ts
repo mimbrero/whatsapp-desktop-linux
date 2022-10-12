@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, shell } from "electron";
 import path from "path";
 import ChromeVersionFix from "./fix/chrome-version-fix";
+import Electron21Fix from "./fix/electron-21-fix";
 import HotkeyModule from "./module/hotkey-module";
 import ModuleManager from "./module/module-manager";
 import TrayModule from "./module/tray-module";
@@ -29,6 +30,7 @@ export default class WhatsApp {
         });
 
         this.moduleManager = new ModuleManager([
+            new Electron21Fix(),
             new HotkeyModule(this, this.window),
             new TrayModule(this, this.window),
             new WindowSettingsModule(this, this.window),

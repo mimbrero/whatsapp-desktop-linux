@@ -37,15 +37,22 @@ export default class HotkeyModule extends Module {
         });
     }
 
+    private zoomIn() {
+        if (this.window.webContents.getZoomFactor() < 3)
+            this.window.webContents.zoomLevel += 1;
+    }
+    
     private registerHotkeys() {
         this.add(
             {
                 control: true,
                 keys: ["+"],
-                action: () => {
-                    if (this.window.webContents.getZoomFactor() < 3)
-                        this.window.webContents.zoomLevel += 1
-                }
+                action: () => this.zoomIn()
+            },
+            {
+                control: true,
+                keys: ["="],
+                action: () => this.zoomIn()
             },
             {
                 control: true,

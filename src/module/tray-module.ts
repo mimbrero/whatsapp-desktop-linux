@@ -3,8 +3,8 @@ import { findIcon, getUnreadMessages } from "../util";
 import WhatsApp from "../whatsapp";
 import Module from "./module";
 
-const ICON = findIcon("io.github.mimbrero.WhatsAppDesktop.png");
-const ICON_UNREAD = findIcon("io.github.mimbrero.WhatsAppDesktop-unread.png");
+const ICON = findIcon("io.github.mimbrero.WhatsAppDesktop-tray.png");
+const ICON_UNREAD = findIcon("io.github.mimbrero.WhatsAppDesktop-tray-unread.png");
 
 export default class TrayModule extends Module {
 

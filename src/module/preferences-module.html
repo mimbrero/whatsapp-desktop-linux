@@ -1,0 +1,16 @@
+<label><input type="checkbox" id="show-in-tray"> Show in tray</label>
+
+<p>Some preferences require a restart to take effect.</p>
+<p>Press <kbd>CTRL</kbd> + <kbd>P</kbd> to open the preferences from the main window.</p>
+
+<script>
+const showInTray = document.querySelector("#show-in-tray");
+
+showInTray.addEventListener("change", (event) => {
+    preferences.setShowInTray(event.target.checked);
+});
+
+(async () => {
+    showInTray.checked =  await preferences.getShowInTray();
+})()
+</script>

@@ -6,6 +6,7 @@ import HotkeyModule from "./module/hotkey-module";
 import ModuleManager from "./module/module-manager";
 import TrayModule from "./module/tray-module";
 import WindowSettingsModule from "./module/window-settings-module";
+import PreferencesModule from "./module/preferences-module";
 
 const USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.9999.0 Safari/537.36";
 
@@ -13,9 +14,12 @@ export default class WhatsApp {
 
     private readonly window: BrowserWindow;
     private readonly moduleManager: ModuleManager;
+    public readonly preferences: PreferencesModule;
     public quitting = false;
 
     constructor() {
+        this.preferences = new PreferencesModule(this);
+
         this.window = new BrowserWindow({
             title: "WhatsApp",
             width: 1100,
@@ -29,13 +33,19 @@ export default class WhatsApp {
             }
         });
 
-        this.moduleManager = new ModuleManager([
+        const modules = [
             new Electron21Fix(),
             new HotkeyModule(this, this.window),
-            new TrayModule(this, this.window),
             new WindowSettingsModule(this, this.window),
-            new ChromeVersionFix(this)
-        ]);
+            new ChromeVersionFix(this),
+            this.preferences
+        ];
+
+        if (this.preferences.showInTray) {
+            modules.push(new TrayModule(this, this.window));
+        }
+
+        this.moduleManager = new ModuleManager(modules);
     }
 
     public init() {

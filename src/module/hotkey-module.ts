@@ -78,6 +78,11 @@ export default class HotkeyModule extends Module {
                 control: true,
                 keys: ["Q"],
                 action: () => this.whatsApp.quit()
+            },
+            {
+                control: true,
+                keys: ["P"],
+                action: () => this.whatsApp.preferences.show()
             }
         );
     }

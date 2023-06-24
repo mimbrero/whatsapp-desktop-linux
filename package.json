@@ -27,6 +27,7 @@
     },
     "files": [
       "dist",
+      "src/module/preferences-module.html",
       "package.json"
     ],
     "extraFiles": [

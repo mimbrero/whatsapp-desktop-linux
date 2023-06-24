@@ -26,6 +26,10 @@ export default class TrayModule extends Module {
     private updateMenu(unread: number = getUnreadMessages(this.window.title)) {
         const menu = Menu.buildFromTemplate([
             {
+                label: "Preferences",
+                click: () => this.whatsApp.preferences.show()
+            },
+            {
                 label: this.window.isVisible() ? "Minimize to tray" : "Show WhatsApp",
                 click: () => this.onClickFirstItem()
             },

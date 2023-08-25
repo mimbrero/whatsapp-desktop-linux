@@ -6,6 +6,7 @@ import HotkeyModule from "./module/hotkey-module";
 import ModuleManager from "./module/module-manager";
 import TrayModule from "./module/tray-module";
 import WindowSettingsModule from "./module/window-settings-module";
+import { findIcon } from "./util";
 
 const USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.9999.0 Safari/537.36";
 
@@ -22,6 +23,7 @@ export default class WhatsApp {
             height: 700,
             minWidth: 650,
             minHeight: 550,
+            icon: findIcon("io.github.mimbrero.WhatsAppDesktop.png"),
             show: !process.argv.includes("--start-hidden"),
             webPreferences: {
                 preload: path.join(__dirname, 'preload.js'),
